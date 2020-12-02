@@ -24,7 +24,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b1b-ie-oJO">
-                                <rect key="frame" x="10" y="116" width="394" height="736"/>
+                                <rect key="frame" x="10" y="146" width="394" height="706"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xi7-OQ-q4q">
@@ -40,15 +40,24 @@
                                     <action selector="searchMovies:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mEI-Pz-ksV"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6m5-dk-Yd9">
+                                <rect key="frame" x="30" y="106" width="354" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="19w-S2-UJP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="5Ju-Li-Efn"/>
                             <constraint firstItem="19w-S2-UJP" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="8XR-Rz-s0s"/>
+                            <constraint firstItem="6m5-dk-Yd9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Ro1-4r-GXp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="19w-S2-UJP" secondAttribute="trailing" constant="80" id="bxJ-sa-xAy"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6m5-dk-Yd9" secondAttribute="trailing" constant="30" id="dAt-yu-Vsd"/>
                             <constraint firstItem="xi7-OQ-q4q" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="f03-tM-Cl9"/>
                             <constraint firstItem="xi7-OQ-q4q" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="19w-S2-UJP" secondAttribute="trailing" constant="8" symbolic="YES" id="inG-FI-6zo"/>
-                            <constraint firstItem="b1b-ie-oJO" firstAttribute="top" secondItem="19w-S2-UJP" secondAttribute="bottom" constant="10" id="nil-uU-PZL"/>
+                            <constraint firstItem="6m5-dk-Yd9" firstAttribute="top" secondItem="19w-S2-UJP" secondAttribute="bottom" id="mf2-AJ-EaL"/>
+                            <constraint firstItem="b1b-ie-oJO" firstAttribute="top" secondItem="19w-S2-UJP" secondAttribute="bottom" constant="40" id="oD4-U7-Z7a"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b1b-ie-oJO" secondAttribute="trailing" constant="10" id="p2F-b5-aMc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xi7-OQ-q4q" secondAttribute="trailing" constant="22" id="quF-Ws-KfR"/>
                             <constraint firstItem="b1b-ie-oJO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="up3-Q3-JMc"/>
@@ -57,6 +66,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="errorField" destination="6m5-dk-Yd9" id="gA6-8Q-ADY"/>
                         <outlet property="tableView" destination="b1b-ie-oJO" id="pJI-Zi-lBh"/>
                         <outlet property="textField" destination="19w-S2-UJP" id="LGS-ov-FVd"/>
                     </connections>

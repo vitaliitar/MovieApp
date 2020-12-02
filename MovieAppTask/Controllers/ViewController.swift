@@ -12,6 +12,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var errorField: UILabel!
     
     private var movies = [Movie]()
     private let movieService = MovieStore.shared
@@ -41,7 +42,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
                     self.tableView.reloadSections([0], with: .none)
                     
                     if (self.movies.count == 0) {
-                        self.showAlert(title: "Sorry", message: "Nothing found by \(searchValue)")
+                        self.errorField.text = "Nothing found by \(searchValue)"
                     }
 
                 case .failure(let error):
@@ -74,13 +75,13 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let detailsViewController = storyBoard.instantiateViewController(withIdentifier: "detailsViewController") as! DetailsViewController
         
         detailsViewController.movieId = movies[indexPath.item].id
         
-        detailsViewController.modalPresentationStyle = .fullScreen
         self.present(detailsViewController, animated:true, completion:nil)
     }
     

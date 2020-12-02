@@ -96,22 +96,20 @@ class CircularProgressView: UIView {
           return layer
       }
       
-      #warning("You can use UILabel")
       private func createTextLayer(textColor: UIColor) -> CATextLayer {
 
         let width = frame.size.width
         let height = frame.size.height
 
-      #warning("Magic numbers. Better to use constants")
-        let fontSize = min(width, height) / 4 - 5
-        let offset = min(width, height) * 0.1
+        let _fontSize = min(width, height) / 4 - 5
+        let _offset = min(width, height) * 0.1
 
         let layer = CATextLayer()
         layer.string = "\(Int(progress * 100))"
         layer.backgroundColor = UIColor.white.cgColor
         layer.foregroundColor = textColor.cgColor
-        layer.fontSize = fontSize
-        layer.frame = CGRect(x: width / 4, y: (height - fontSize - offset) / 2, width: width / 2, height: height / 2)
+        layer.fontSize = _fontSize
+        layer.frame = CGRect(x: width / 4, y: (height - _fontSize - _offset) / 2, width: width / 2, height: height / 2)
         layer.alignmentMode = .center
 
         return layer

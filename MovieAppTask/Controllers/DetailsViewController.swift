@@ -50,7 +50,7 @@ class DetailsViewController: UIViewController {
         self.runtimeLabel.text = model.durationText
         self.releaseDateLabel.text = model.releaseDate
         
-        var cp = CircularProgressView(frame: CGRect(x: 10, y: 10, width: 100, height: 100))
+        let cp = CircularProgressView(frame: CGRect(x: 10, y: 10, width: 100, height: 100))
         
         cp.progress = CGFloat(model.rating) / 100
             
