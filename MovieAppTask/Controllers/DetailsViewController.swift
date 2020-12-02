@@ -18,8 +18,8 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var runtimeLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     
-    var movie: Movie?
-    let movieService = MovieStore.shared
+    private var movie: Movie?
+    private let movieService = MovieStore.shared
     var movieId: Int?
    
     
@@ -34,7 +34,6 @@ class DetailsViewController: UIViewController {
                 print("Error: \(error)")
             }
         }
-        
     }
 
     func configure(with model: Movie) {
@@ -56,7 +55,6 @@ class DetailsViewController: UIViewController {
         cp.progress = CGFloat(model.rating) / 100
             
         self.circleProgessView.addSubview(cp)
-        
        
         cp.setProgressWithAnimation(duration: 2.0)
     }

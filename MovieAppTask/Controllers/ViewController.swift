@@ -13,13 +13,26 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
-    var movies = [Movie]()
-    let movieService = MovieStore.shared
-    var movieId: Int?
+    private var movies = [Movie]()
+    private let movieService = MovieStore.shared
+    private var movieId: Int?
+    
+    private func showAlert(title: String, message: String) {
+         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+
+            alert.addAction(UIAlertAction(title: "Try again",
+                                          style: UIAlertAction.Style.default,
+                                          handler: {(_: UIAlertAction!) in
+            }))
+            self.present(alert, animated: true, completion: nil)
+     }
     
     @IBAction func searchMovies(_ sender: UIButton) {
         let searchValue = textField.text!
-//        check if empty
+        if (searchValue.isEmpty) {
+            showAlert(title: "Error", message: "Enter correct movie name")
+            return
+        }
         
         movieService.searchMovie(query: searchValue) { (result) in
             switch result {
@@ -27,11 +40,12 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
                     self.movies = response.results
                     self.tableView.reloadSections([0], with: .none)
                     
-                    // check if no movies found
+                    if (self.movies.count == 0) {
+                        self.showAlert(title: "Sorry", message: "Nothing found by \(searchValue)")
+                    }
+
                 case .failure(let error):
                     print(error)
-                    // reload page nothing found
-
             }
         }
     }
