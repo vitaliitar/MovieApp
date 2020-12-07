@@ -22,6 +22,15 @@ class DetailsViewController: UIViewController {
     private let movieService = MovieStore.shared
     var movieId: Int?
    
+    private func showAlert(title: String, message: String) {
+           let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+
+              alert.addAction(UIAlertAction(title: "Try again",
+                                            style: UIAlertAction.Style.default,
+                                            handler: {(_: UIAlertAction!) in
+              }))
+              self.present(alert, animated: true, completion: nil)
+       }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,8 +40,7 @@ class DetailsViewController: UIViewController {
             case .success(let response):
                 self.configure(with: response)
             case .failure(let error):
-                #warning("raise an error to user")
-                print("Error: \(error)")
+                self.showAlert(title: "Error", message: "\(error)")
             }
         }
     }

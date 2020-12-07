@@ -49,8 +49,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                          }
 
                      case .failure(let error):
-                         #warning("show to user")
-                         print(error)
+                        self.showAlert(title: "Error", message: "\(error)")
                  }
              }
     }
@@ -81,8 +80,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-           #warning("It would be better to use storyboard storyboard segue and 'prepare for segue' method")
 
         movieId = movies[indexPath.item].id
         
@@ -98,7 +95,5 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             vc?.movieId = movieId
         }
     }
-    
-
 }
 
