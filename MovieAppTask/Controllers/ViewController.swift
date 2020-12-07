@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -28,28 +28,33 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
             self.present(alert, animated: true, completion: nil)
      }
     
-    @IBAction func searchMovies(_ sender: UIButton) {
+    @IBAction func findMovies(_ sender: UITextField) {
         let searchValue = textField.text!
-        if (searchValue.isEmpty) {
-            showAlert(title: "Error", message: "Enter correct movie name")
-            return
-        }
-        
-        movieService.searchMovie(query: searchValue) { (result) in
-            switch result {
-                case .success(let response):
-                    self.movies = response.results
-                    self.tableView.reloadSections([0], with: .none)
-                    
-                    if (self.movies.count == 0) {
-                        self.errorField.text = "Nothing found by \(searchValue)"
-                    }
+             if (searchValue.isEmpty) {
+                 showAlert(title: "Error", message: "Enter correct movie name")
+                 return
+             }
+             
+             movieService.searchMovie(query: searchValue) { (result) in
+                 switch result {
+                     case .success(let response):
+                         self.movies = response.results
+                         self.tableView.reloadSections([0], with: .none)
+                         
+                         if (self.movies.count == 0) {
+                             self.errorField.text = "Nothing found by \(searchValue)"
+                         }
+                         else {
+                            self.errorField.text = ""
+                         }
 
-                case .failure(let error):
-                    print(error)
-            }
-        }
+                     case .failure(let error):
+                         #warning("show to user")
+                         print(error)
+                 }
+             }
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,14 +82,22 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailsViewController = storyBoard.instantiateViewController(withIdentifier: "detailsViewController") as! DetailsViewController
+           #warning("It would be better to use storyboard storyboard segue and 'prepare for segue' method")
+
+        movieId = movies[indexPath.item].id
         
-        detailsViewController.movieId = movies[indexPath.item].id
+        performSegue(withIdentifier: "goDetailsView", sender: nil)
         
-        self.present(detailsViewController, animated:true, completion:nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is DetailsViewController
+        {
+            let vc = segue.destination as? DetailsViewController
+            vc?.movieId = movieId
+        }
+    }
     
 
 }

@@ -18,8 +18,6 @@ class CircularProgressView: UIView {
       override init(frame: CGRect) {
           super.init(frame: frame)
           commonInit()
-          
-         
       }
 
       required init?(coder aDecoder: NSCoder) {
@@ -29,9 +27,9 @@ class CircularProgressView: UIView {
     
     private func commonInit() {
 
-        Bundle.main.loadNibNamed("CircularProgressView", owner: self, options: nil)
+         Bundle.main.loadNibNamed("CircularProgressView", owner: self, options: nil)
         
-        self.backgroundColor = UIColor.clear
+         self.backgroundColor = UIColor.clear
          self.layer.cornerRadius = self.frame.size.width / 2
          
          trackLayer = createTrackLayer()
@@ -46,10 +44,10 @@ class CircularProgressView: UIView {
 
          layer.addSublayer(textLayer)
         
-        addSubview(circleView)
+         addSubview(circleView)
         
-        circleView.frame = self.bounds
-        circleView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+         circleView.frame = self.bounds
+         circleView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
       
@@ -121,7 +119,7 @@ class CircularProgressView: UIView {
         let _offset = min(width, height) * 0.1
 
         let layer = CATextLayer()
-        layer.string = "\(Int(progress * 100))"
+        layer.string = "\(Int(progress * 100))%"
         layer.backgroundColor = UIColor.white.cgColor
         layer.foregroundColor = textColor.cgColor
         layer.fontSize = _fontSize

@@ -15,9 +15,6 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var circleProgressView: CircularProgressView!
     
-    #warning("ui should be dynamic")
-//    private var cp = CircularProgressView(frame: CGRect(x: 10, y: 10, width: 100, height: 100))
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,9 +42,6 @@ class TableViewCell: UITableViewCell {
         }
         
         self.circleProgressView.progress = CGFloat(model.rating) / 100
-        
-//        self.circleProgressView.layer.sublayers?.popLast()
-//        self.circleProgressView.addSubview(cp)
 
     }
     

@@ -13,7 +13,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
-    @IBOutlet weak var circleProgessView: UIView!
+    @IBOutlet weak var circleProgessView: CircularProgressView!
     @IBOutlet weak var voteCountLabel: UILabel!
     @IBOutlet weak var runtimeLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
@@ -31,11 +31,15 @@ class DetailsViewController: UIViewController {
             case .success(let response):
                 self.configure(with: response)
             case .failure(let error):
+                #warning("raise an error to user")
                 print("Error: \(error)")
             }
         }
     }
-
+    @IBAction func goBack(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     func configure(with model: Movie) {
         self.titleLabel.text = model.title
         self.overviewLabel.text = model.overview
@@ -50,13 +54,9 @@ class DetailsViewController: UIViewController {
         self.runtimeLabel.text = model.durationText
         self.releaseDateLabel.text = model.releaseDate
         
-        let cp = CircularProgressView(frame: CGRect(x: 10, y: 10, width: 100, height: 100))
-        
-        cp.progress = CGFloat(model.rating) / 100
-            
-        self.circleProgessView.addSubview(cp)
-       
-        cp.setProgressWithAnimation(duration: 2.0)
+        self.circleProgessView.progress = CGFloat(model.rating) / 100
+                           
+        self.circleProgessView.setProgressWithAnimation(duration: 2.0)
     }
 
 }
