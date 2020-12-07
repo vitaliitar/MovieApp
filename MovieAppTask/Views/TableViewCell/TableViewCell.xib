@@ -29,9 +29,9 @@
                             <constraint firstAttribute="width" constant="300" id="Q4F-UW-stO"/>
                         </constraints>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Km1-RB-qRF">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Km1-RB-qRF" customClass="CircularProgressView" customModule="MovieAppTask" customModuleProvider="target">
                         <rect key="frame" x="45" y="321" width="120" height="120"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="120" id="E2f-zd-q4V"/>
                             <constraint firstAttribute="width" constant="120" id="Hxi-n2-gCv"/>

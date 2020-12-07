@@ -18,6 +18,7 @@
 		F64ECBA6257576BF00054483 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64ECBA5257576BF00054483 /* CircularProgressView.swift */; };
 		F64ECBAB257590D900054483 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64ECBAA257590D900054483 /* Movie.swift */; };
 		F64ECBAD2575970F00054483 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64ECBAC2575970F00054483 /* Utils.swift */; };
+		F64F25A1257E827800354524 /* CircularProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F64F25A0257E827800354524 /* CircularProgressView.xib */; };
 		F690174C25779A200064F2D7 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F690174B25779A200064F2D7 /* MovieService.swift */; };
 		F690174E25779A5D0064F2D7 /* MovieStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F690174D25779A5D0064F2D7 /* MovieStore.swift */; };
 		F69017522577A0AB0064F2D7 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69017502577A0AB0064F2D7 /* TableViewCell.swift */; };
@@ -41,6 +42,7 @@
 		F64ECBA5257576BF00054483 /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 		F64ECBAA257590D900054483 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		F64ECBAC2575970F00054483 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		F64F25A0257E827800354524 /* CircularProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircularProgressView.xib; sourceTree = "<group>"; };
 		F690174B25779A200064F2D7 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		F690174D25779A5D0064F2D7 /* MovieStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStore.swift; sourceTree = "<group>"; };
 		F69017502577A0AB0064F2D7 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -115,10 +117,10 @@
 		F64ECBA0257570C900054483 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F64F259F257E823900354524 /* CircularProgressView */,
 				F690174F2577A0870064F2D7 /* TableViewCell */,
 				F64ECB9725756C7800054483 /* LaunchScreen.storyboard */,
 				F64ECB8F25756C6F00054483 /* Main.storyboard */,
-				F64ECBA5257576BF00054483 /* CircularProgressView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -155,6 +157,15 @@
 				F690174D25779A5D0064F2D7 /* MovieStore.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		F64F259F257E823900354524 /* CircularProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				F64ECBA5257576BF00054483 /* CircularProgressView.swift */,
+				F64F25A0257E827800354524 /* CircularProgressView.xib */,
+			);
+			path = CircularProgressView;
 			sourceTree = "<group>";
 		};
 		F690174F2577A0870064F2D7 /* TableViewCell */ = {
@@ -229,6 +240,7 @@
 				F64ECB9925756C7800054483 /* LaunchScreen.storyboard in Resources */,
 				F69017532577A0AB0064F2D7 /* TableViewCell.xib in Resources */,
 				F64ECB9625756C7800054483 /* Assets.xcassets in Resources */,
+				F64F25A1257E827800354524 /* CircularProgressView.xib in Resources */,
 				F64ECB9125756C6F00054483 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,34 +8,50 @@
 
 import UIKit
 
-class CircularProgressView: UIView {
 
-      private var progressLayer = CAShapeLayer()
+class CircularProgressView: UIView {
+    @IBOutlet weak var circleView: UIView!
+    private var progressLayer = CAShapeLayer()
       private var trackLayer = CAShapeLayer()
       private var textLayer = CATextLayer()
       
       override init(frame: CGRect) {
           super.init(frame: frame)
+          commonInit()
           
-          self.backgroundColor = UIColor.clear
-          self.layer.cornerRadius = self.frame.size.width / 2
-          
-          trackLayer = createTrackLayer()
-          
-          layer.addSublayer(trackLayer)
-          
-          progressLayer = createProgressLayer()
-          
-          layer.addSublayer(progressLayer)
-                  
-          textLayer = createTextLayer(textColor: UIColor.black)
-
-          layer.addSublayer(textLayer)
+         
       }
 
       required init?(coder aDecoder: NSCoder) {
           super.init(coder: aDecoder)
+          commonInit()
       }
+    
+    private func commonInit() {
+
+        Bundle.main.loadNibNamed("CircularProgressView", owner: self, options: nil)
+        
+        self.backgroundColor = UIColor.clear
+         self.layer.cornerRadius = self.frame.size.width / 2
+         
+         trackLayer = createTrackLayer()
+         
+         layer.addSublayer(trackLayer)
+         
+         progressLayer = createProgressLayer()
+         
+         layer.addSublayer(progressLayer)
+                 
+         textLayer = createTextLayer(textColor: UIColor.black)
+
+         layer.addSublayer(textLayer)
+        
+        addSubview(circleView)
+        
+        circleView.frame = self.bounds
+        circleView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+    
       
       var progress: CGFloat = 0 {
          didSet {

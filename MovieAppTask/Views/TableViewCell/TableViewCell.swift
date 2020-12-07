@@ -13,9 +13,11 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
-    @IBOutlet weak var circleProgressView: UIView!
+    @IBOutlet weak var circleProgressView: CircularProgressView!
     
-    private var cp = CircularProgressView(frame: CGRect(x: 10, y: 10, width: 100, height: 100))
+    #warning("ui should be dynamic")
+//    private var cp = CircularProgressView(frame: CGRect(x: 10, y: 10, width: 100, height: 100))
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,16 +37,17 @@ class TableViewCell: UITableViewCell {
         self.titleLabel.text = model.title
         self.yearLabel.text = model.yearText
         
+        
         let url = model.posterURL
         
         if let data = try? Data(contentsOf: url) {
             self.posterImageView.image = UIImage(data: data)
         }
         
-        cp.progress = CGFloat(model.rating) / 100
+        self.circleProgressView.progress = CGFloat(model.rating) / 100
         
-        self.circleProgressView.layer.sublayers?.popLast()
-        self.circleProgressView.addSubview(cp)
+//        self.circleProgressView.layer.sublayers?.popLast()
+//        self.circleProgressView.addSubview(cp)
 
     }
     
