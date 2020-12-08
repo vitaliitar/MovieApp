@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4D2AEC6B0EA510D9E1A10DB0 /* Pods_MovieAppTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 167685E9CDDC5665B90DA591 /* Pods_MovieAppTask.framework */; };
 		F64DC76E257FAC72008D890D /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64DC76D257FAC72008D890D /* MoviesViewModel.swift */; };
+		F64EC05D25801E3500BDE17E /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EC05B25801E3500BDE17E /* CollectionViewCell.swift */; };
+		F64EC05E25801E3500BDE17E /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F64EC05C25801E3500BDE17E /* CollectionViewCell.xib */; };
 		F64ECB8A25756C6F00054483 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64ECB8925756C6F00054483 /* AppDelegate.swift */; };
 		F64ECB8C25756C6F00054483 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64ECB8B25756C6F00054483 /* SceneDelegate.swift */; };
 		F64ECB8E25756C6F00054483 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64ECB8D25756C6F00054483 /* ViewController.swift */; };
@@ -33,6 +35,8 @@
 		8022737709441DE36F9B7C62 /* Pods-MovieAppTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppTask.debug.xcconfig"; path = "Target Support Files/Pods-MovieAppTask/Pods-MovieAppTask.debug.xcconfig"; sourceTree = "<group>"; };
 		91A280761597C7C2E3559B5D /* Pods-MovieAppTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppTask.release.xcconfig"; path = "Target Support Files/Pods-MovieAppTask/Pods-MovieAppTask.release.xcconfig"; sourceTree = "<group>"; };
 		F64DC76D257FAC72008D890D /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
+		F64EC05B25801E3500BDE17E /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		F64EC05C25801E3500BDE17E /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		F64ECB8625756C6F00054483 /* MovieAppTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieAppTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F64ECB8925756C6F00054483 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F64ECB8B25756C6F00054483 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +95,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		F64EC05A25801E0E00BDE17E /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				F64EC05B25801E3500BDE17E /* CollectionViewCell.swift */,
+				F64EC05C25801E3500BDE17E /* CollectionViewCell.xib */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
 		F64ECB7D25756C6F00054483 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +143,7 @@
 		F64ECBA0257570C900054483 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F64EC05A25801E0E00BDE17E /* CollectionViewCell */,
 				F64F259F257E823900354524 /* CircularProgressView */,
 				F690174F2577A0870064F2D7 /* TableViewCell */,
 				F64ECB9725756C7800054483 /* LaunchScreen.storyboard */,
@@ -253,6 +267,7 @@
 			files = (
 				F64ECB9925756C7800054483 /* LaunchScreen.storyboard in Resources */,
 				F69017532577A0AB0064F2D7 /* TableViewCell.xib in Resources */,
+				F64EC05E25801E3500BDE17E /* CollectionViewCell.xib in Resources */,
 				F64ECB9625756C7800054483 /* Assets.xcassets in Resources */,
 				F64F25A1257E827800354524 /* CircularProgressView.xib in Resources */,
 				F64ECB9125756C6F00054483 /* Main.storyboard in Resources */,
@@ -318,6 +333,7 @@
 				F64DC76E257FAC72008D890D /* MoviesViewModel.swift in Sources */,
 				F64ECB8A25756C6F00054483 /* AppDelegate.swift in Sources */,
 				F64ECBA6257576BF00054483 /* CircularProgressView.swift in Sources */,
+				F64EC05D25801E3500BDE17E /* CollectionViewCell.swift in Sources */,
 				F690174C25779A200064F2D7 /* MovieService.swift in Sources */,
 				F64ECB8C25756C6F00054483 /* SceneDelegate.swift in Sources */,
 				F64F25AB257EC21B00354524 /* SectionsController.swift in Sources */,

@@ -9,17 +9,16 @@
 import UIKit
 
 class SectionsController: UIViewController {
-
     
-    
-    //    private var topRatedMovies = [Movie]()
-//    private var popularMovies = [Movie]()
+    private var topRatedMovies = [Movie]()
     
     private let movieService = MovieStore.shared
     private var movieId: Int?
 
     
     @IBOutlet weak var tablePopularView: UITableView!
+    
+    @IBOutlet weak var collectionTopRatedView: UICollectionView!
     
     private var viewModel: MoviesViewModel!
     
@@ -29,8 +28,27 @@ class SectionsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerNib()
         
+        movieService.getTopRatedMovies() { (result) in
+            switch result {
+                case .success(let response):
+                    self.topRatedMovies = response.results
+                    print("TopRatedMovie: \(self.topRatedMovies.count)")
+//                    self.tableView.reloadSections([0], with: .none)
+                    self.collectionTopRatedView.reloadData()
+                     // check validation
+
+                case .failure(let error):
+                    print("\(error)")
+//                   self.showAlert(title: "Error", message: "\(error)")
+            }
+        }
         
+        collectionTopRatedView.dataSource = self
+        collectionTopRatedView.delegate = self
+        
+    
         indicatorView.color = UIColor.green
         indicatorView.startAnimating()
         
@@ -38,7 +56,8 @@ class SectionsController: UIViewController {
         tablePopularView.separatorColor = UIColor.green
         
         tablePopularView.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.identifier)
-
+        
+        tablePopularView.delegate = self
         tablePopularView.dataSource = self
         tablePopularView.prefetchDataSource = self
         
@@ -48,8 +67,72 @@ class SectionsController: UIViewController {
         
         
     }
-
+    
+    func registerNib() {
+        let nib = UINib(nibName: CollectionViewCell.nibName, bundle: nil)
+        collectionTopRatedView?.register(nib, forCellWithReuseIdentifier: CollectionViewCell.reuseIdentifier)
+        print("Register nib")
+//        if let flowLayout = self.collectionTopRatedView?.collectionViewLayout as? UICollectionViewFlowLayout {
+//            flowLayout.estimatedItemSize = CGSize(width: 100, height: 100)
+//        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is DetailsViewController
+        {
+            let vc = segue.destination as? DetailsViewController
+            vc?.movieId = movieId
+        }
+    }
 }
+
+extension SectionsController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        movieId = viewModel.movie(at: indexPath.row).id
+        
+        performSegue(withIdentifier: "goToDetailsView", sender: nil)
+    }
+}
+
+extension SectionsController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+         return topRatedMovies.count
+     }
+
+     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.reuseIdentifier, for: indexPath) as? CollectionViewCell {
+            
+            let movie = topRatedMovies[indexPath.row]
+//             cell.configure(name: name)
+            
+            print("Nice cell is good")
+            cell.configure(with: movie)
+             return cell
+         }
+        print("Not cool")
+         return UICollectionViewCell()
+     }
+    
+}
+
+//extension SectionsController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView,
+//                        layout collectionViewLayout: UICollectionViewLayout,
+//                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        guard let cell: CollectionViewCell = Bundle.main.loadNibNamed(
+//            "CollectionViewCell", owner: self, options: nil)?.first as? CollectionViewCell else {
+//            return CGSize.zero
+//        }
+////        cell.configure(name: names[indexPath.row])
+//        cell.configure(with: topRatedMovies[indexPath.row])
+//        cell.setNeedsLayout()
+//        cell.layoutIfNeeded()
+//        let size: CGSize = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+//        return CGSize(width: size.width, height: 120)
+//    }
+//}
+
 
 extension SectionsController: UITableViewDataSource {
     
@@ -70,8 +153,18 @@ extension SectionsController: UITableViewDataSource {
            
            return cell
        }
-    
 
+}
+
+extension SectionsController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+         tableView.deselectRow(at: indexPath, animated: true)
+
+        movieId = viewModel.movie(at: indexPath.row).id
+        
+        performSegue(withIdentifier: "goToDetailsView", sender: nil)
+
+     }
 }
 
 extension SectionsController: UITableViewDataSourcePrefetching {
@@ -106,7 +199,7 @@ extension SectionsController: MoviesViewModelDelegate {
         let title = "Warning"
         
         let action = UIAlertAction(title: "OK", style: .default)
-        
+        print("Error")
         // todo display alert
         
     }

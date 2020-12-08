@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,32 +17,64 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MKC-jQ-Y76">
-                                <rect key="frame" x="0.0" y="94" width="414" height="699"/>
+                                <rect key="frame" x="0.0" y="423" width="414" height="370"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="370" id="xE1-RF-ecY"/>
+                                </constraints>
                                 <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="aaG-In-lIv">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </activityIndicatorView>
                             </tableView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PRp-pG-tYb">
+                                <rect key="frame" x="10" y="64" width="394" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="KSo-D8-X73"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="O3g-sB-Mbl">
+                                    <size key="itemSize" width="209" height="198"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewCellIdentifier" id="pKj-Q8-3Gd">
+                                        <rect key="frame" x="0.0" y="1" width="209" height="198"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8Op-yt-i9r">
+                                            <rect key="frame" x="0.0" y="0.0" width="209" height="198"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="customSize" width="209" height="198"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="MKC-jQ-Y76" firstAttribute="top" secondItem="FRP-OP-mfG" secondAttribute="top" constant="50" id="CUg-tc-ak2"/>
-                            <constraint firstItem="FRP-OP-mfG" firstAttribute="bottom" secondItem="MKC-jQ-Y76" secondAttribute="bottom" constant="20" id="GQC-zn-dDp"/>
-                            <constraint firstItem="MKC-jQ-Y76" firstAttribute="leading" secondItem="FRP-OP-mfG" secondAttribute="leading" id="U97-db-1FL"/>
-                            <constraint firstItem="FRP-OP-mfG" firstAttribute="trailing" secondItem="MKC-jQ-Y76" secondAttribute="trailing" id="lab-oK-NjP"/>
+                            <constraint firstItem="MKC-jQ-Y76" firstAttribute="trailing" secondItem="FRP-OP-mfG" secondAttribute="trailing" id="2b5-Ny-TjM"/>
+                            <constraint firstItem="PRp-pG-tYb" firstAttribute="leading" secondItem="FRP-OP-mfG" secondAttribute="leading" constant="10" id="Ae4-IH-nzY"/>
+                            <constraint firstItem="MKC-jQ-Y76" firstAttribute="leading" secondItem="FRP-OP-mfG" secondAttribute="leading" id="Br7-4L-wzO"/>
+                            <constraint firstItem="FRP-OP-mfG" firstAttribute="bottom" secondItem="MKC-jQ-Y76" secondAttribute="bottom" constant="20" id="J0e-iA-vnn"/>
+                            <constraint firstAttribute="trailing" secondItem="PRp-pG-tYb" secondAttribute="trailing" constant="10" id="VS8-y3-nJ3"/>
+                            <constraint firstItem="PRp-pG-tYb" firstAttribute="top" secondItem="FRP-OP-mfG" secondAttribute="top" constant="20" id="oT1-AR-jBF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FRP-OP-mfG"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="idx-J4-wKf"/>
                     <connections>
+                        <outlet property="collectionTopRatedView" destination="PRp-pG-tYb" id="v5e-ri-Orm"/>
                         <outlet property="indicatorView" destination="aaG-In-lIv" id="nge-Yr-OCo"/>
                         <outlet property="tablePopularView" destination="MKC-jQ-Y76" id="g7W-Q8-PpN"/>
+                        <segue destination="y8W-Rc-7mU" kind="show" identifier="goToDetailsView" id="WEY-kh-qH4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s6G-B9-Tpk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1004" y="-336"/>
+            <point key="canvasLocation" x="-1004.3478260869566" y="-336.16071428571428"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="N7W-m3-Mer">
@@ -230,7 +263,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRF-nw-hjb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-132" y="341"/>
+            <point key="canvasLocation" x="83" y="-77"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="WEY-kh-qH4"/>
+    </inferredMetricsTieBreakers>
 </document>
