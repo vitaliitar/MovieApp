@@ -41,6 +41,25 @@ class MovieStore: MovieService {
         ], completion: completion)
     }
     
+    func getTopRatedMovies(completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
+         guard let url = URL(string: "\(baseAPIURL)/movie/top_rated") else {
+               completion(.failure(.invalidEndpoint))
+               return
+           }
+           self.loadURLAndDecode(url: url, completion: completion)
+    }
+    
+    func getPopularMovies(page: Int, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
+        guard let url = URL(string: "\(baseAPIURL)/movie/popular") else {
+            completion(.failure(.invalidEndpoint))
+            return
+        }
+        self.loadURLAndDecode(url: url, params: [
+                                        "page": "\(page)"
+                                        ],
+                                        completion: completion)
+    }
+    
     private func loadURLAndDecode<D: Decodable>(url: URL, params: [String: String]? = nil, completion: @escaping (Result<D, MovieError>) -> ()) {
         guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             completion(.failure(.invalidEndpoint))

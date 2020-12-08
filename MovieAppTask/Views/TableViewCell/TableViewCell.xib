@@ -29,6 +29,12 @@
                             <constraint firstAttribute="width" constant="300" id="Q4F-UW-stO"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucd-Qh-xGx">
+                        <rect key="frame" x="215" y="351" width="34" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Km1-RB-qRF" customClass="CircularProgressView" customModule="MovieAppTask" customModuleProvider="target">
                         <rect key="frame" x="45" y="321" width="120" height="120"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -37,12 +43,6 @@
                             <constraint firstAttribute="width" constant="120" id="Hxi-n2-gCv"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ucd-Qh-xGx">
-                        <rect key="frame" x="215" y="351" width="34" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="9zV-eX-7ME" firstAttribute="top" secondItem="6fL-RO-3wz" secondAttribute="bottom" constant="30" id="01H-oW-ev7"/>
