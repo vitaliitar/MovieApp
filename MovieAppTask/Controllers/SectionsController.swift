@@ -8,9 +8,12 @@
 
 import UIKit
 
-class SectionsController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    private var topRatedMovies = [Movie]()
-    private var popularMovies = [Movie]()
+class SectionsController: UIViewController {
+
+    
+    
+    //    private var topRatedMovies = [Movie]()
+//    private var popularMovies = [Movie]()
     
     private let movieService = MovieStore.shared
     private var movieId: Int?
@@ -18,54 +21,106 @@ class SectionsController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tablePopularView: UITableView!
     
+    private var viewModel: MoviesViewModel!
+    
+    private var shouldShowLoadingCell = false
+    
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-             movieService.getPopularMovies(page: 1) { (result) in
-                           switch result {
-                           case .success(let response):
-                                self.popularMovies = response.results
-                                self.tablePopularView.reloadSections([0], with: .none)
-                                print("\(self.popularMovies.count)")
-        //                       self.configure(with: response)
-                           case .failure(let error):
-                            print(error)
-        //                       self.showAlert(title: "Error", message: "\(error)")
-                           }
-                       }
+        
+        indicatorView.color = UIColor.green
+        indicatorView.startAnimating()
+        
+        tablePopularView.isHidden = true
+        tablePopularView.separatorColor = UIColor.green
         
         tablePopularView.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.identifier)
-        tablePopularView.delegate = self
+
         tablePopularView.dataSource = self
+        tablePopularView.prefetchDataSource = self
+        
+        viewModel = MoviesViewModel(delegate: self)
+        
+        viewModel.fetchMovies()
         
         
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-          return 500
-      }
-      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // should be count of server
-        print(popularMovies.count)
-          return popularMovies.count
-      }
-      
-      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-          let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
-          
-          cell.configure(with: popularMovies[indexPath.row])
-          
-          return cell
-      }
-      
-      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-          tableView.deselectRow(at: indexPath, animated: true)
 
-          movieId = popularMovies[indexPath.item].id
-          
-          performSegue(withIdentifier: "goDetailsView", sender: nil)
-          
-      }
+}
+
+extension SectionsController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(viewModel.totalCount)
+        return viewModel.totalCount
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+           let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
+           
+        if isLoadingCell(for: indexPath) {
+            cell.configure(with: .none)
+        }
+        else {
+            cell.configure(with: viewModel.movie(at: indexPath.row))
+        }
+           
+           return cell
+       }
     
 
+}
+
+extension SectionsController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        if indexPaths.contains(where: isLoadingCell) {
+            viewModel.fetchMovies()
+        }
+    }
+}
+
+extension SectionsController: MoviesViewModelDelegate {
+    
+    func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
+        guard let newIndexPathsToReload = newIndexPathsToReload else {
+            indicatorView.stopAnimating()
+            
+            tablePopularView.isHidden = false
+            tablePopularView.reloadData()
+
+            return
+        }
+        
+        let indexPathsToReload = visibleIndexPathsToReload(intersecting: newIndexPathsToReload)
+        tablePopularView.reloadRows(at: indexPathsToReload, with: .automatic)
+
+    }
+    
+    func onFetchFailed(with reason: String) {
+        // indicator
+        indicatorView.stopAnimating()
+        
+        let title = "Warning"
+        
+        let action = UIAlertAction(title: "OK", style: .default)
+        
+        // todo display alert
+        
+    }
+}
+
+
+private extension SectionsController {
+  func isLoadingCell(for indexPath: IndexPath) -> Bool {
+    return indexPath.row >= viewModel.currentCount
+  }
+  
+  func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
+    let indexPathsForVisibleRows = tablePopularView.indexPathsForVisibleRows ?? []
+    let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
+    return Array(indexPathsIntersection)
+  }
 }

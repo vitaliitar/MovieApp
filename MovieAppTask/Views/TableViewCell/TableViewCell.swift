@@ -15,9 +15,19 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var circleProgressView: CircularProgressView!
     
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    
+    override func prepareForReuse() {
+      super.prepareForReuse()
+      
+      configure(with: .none)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        indicatorView.hidesWhenStopped = true
+        indicatorView.color = UIColor.green
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,19 +40,26 @@ class TableViewCell: UITableViewCell {
     
     static let identifier = "tableViewCell"
     
-    func configure(with model: Movie) {
-        self.titleLabel.text = model.title
-        self.yearLabel.text = model.yearText
-        
-        
-        let url = model.posterURL
-        
-        if let data = try? Data(contentsOf: url) {
-            self.posterImageView.image = UIImage(data: data)
-        }
-        
-        self.circleProgressView.progress = CGFloat(model.rating) / 100
+    func configure(with movie: Movie?) {
+        if let movie = movie {
+            self.titleLabel.text = movie.title
+           self.yearLabel.text = movie.yearText
+           
+           
+           let url = movie.posterURL
+           
+           if let data = try? Data(contentsOf: url) {
+               self.posterImageView.image = UIImage(data: data)
+           }
+           
+           self.circleProgressView.progress = CGFloat(movie.rating) / 100
+            indicatorView.stopAnimating()
 
+        }
+        else {
+            // todo active indicator
+            indicatorView.startAnimating()
+        }
     }
     
 }

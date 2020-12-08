@@ -16,13 +16,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MKC-jQ-Y76">
-                                <rect key="frame" x="0.0" y="464" width="414" height="329"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="699"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="aaG-In-lIv">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="MKC-jQ-Y76" firstAttribute="top" secondItem="FRP-OP-mfG" secondAttribute="top" constant="420" id="CS2-Rm-dCy"/>
+                            <constraint firstItem="MKC-jQ-Y76" firstAttribute="top" secondItem="FRP-OP-mfG" secondAttribute="top" constant="50" id="CUg-tc-ak2"/>
                             <constraint firstItem="FRP-OP-mfG" firstAttribute="bottom" secondItem="MKC-jQ-Y76" secondAttribute="bottom" constant="20" id="GQC-zn-dDp"/>
                             <constraint firstItem="MKC-jQ-Y76" firstAttribute="leading" secondItem="FRP-OP-mfG" secondAttribute="leading" id="U97-db-1FL"/>
                             <constraint firstItem="FRP-OP-mfG" firstAttribute="trailing" secondItem="MKC-jQ-Y76" secondAttribute="trailing" id="lab-oK-NjP"/>
@@ -31,6 +35,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="idx-J4-wKf"/>
                     <connections>
+                        <outlet property="indicatorView" destination="aaG-In-lIv" id="nge-Yr-OCo"/>
                         <outlet property="tablePopularView" destination="MKC-jQ-Y76" id="g7W-Q8-PpN"/>
                     </connections>
                 </viewController>
