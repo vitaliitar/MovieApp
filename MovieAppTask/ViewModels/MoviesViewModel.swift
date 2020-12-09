@@ -15,40 +15,38 @@ protocol MoviesViewModelDelegate: class {
 
 final class MoviesViewModel {
   private weak var delegate: MoviesViewModelDelegate?
-  
+
   private var popularMovies: [Movie] = []
   private var currentPage = 1
   private var total = 0
   private var isFetchInProgress = false
-  
+
     private let movieService = MovieStore.shared
-    
-  
+
   init(delegate: MoviesViewModelDelegate) {
     self.delegate = delegate
   }
-  
+
   var totalCount: Int {
     return total
   }
-  
+
   var currentCount: Int {
     return popularMovies.count
   }
-  
+
   func movie(at index: Int) -> Movie {
     return popularMovies[index]
   }
-  
+
   func fetchMovies() {
     guard !isFetchInProgress else {
       return
     }
 
     isFetchInProgress = true
-    
-    movieService.getPopularMovies(page: currentPage) {
-        result in
+
+    movieService.getPopularMovies(page: currentPage) { result in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
@@ -60,29 +58,26 @@ final class MoviesViewModel {
                     self.popularMovies.append(contentsOf: response.results)
                     print("Added")
                     print("PopularMovies: \(self.popularMovies.count)")
-                    
+
                     if response.page > 1 {
                         let indexPathsToReload = self.calculateIndexPathsToReload(from: response.results)
                         self.delegate?.onFetchCompleted(with: indexPathsToReload)
-                    }
-                    else {
+                    } else {
                         self.delegate?.onFetchCompleted(with: .none)
                     }
                 }
-                
-                
+
             case .failure(let error):
                 print("\(error)")
                 self.isFetchInProgress = false
             }
         }
   }
-    
+
   private func calculateIndexPathsToReload(from newMovies: [Movie]) -> [IndexPath] {
     let startIndex = popularMovies.count - newMovies.count
     let endIndex = startIndex + newMovies.count
     return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
   }
-  
-}
 
+}

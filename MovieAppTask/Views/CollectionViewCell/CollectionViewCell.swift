@@ -9,37 +9,30 @@
 import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var imageContainerView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
-//    static let identifier = "CollectionViewCellIdentifier"
     static var reuseIdentifier = "CollectionViewCellReuseIdentifier"
     static let nibName = "CollectionViewCell"
     
-//    static func nib() -> UINib {
-//        return UINib(nibName: nibName, bundle: nil)
-//    }
-    
-    
+    static func nib() -> UINib {
+        return UINib(nibName: nibName, bundle: nil)
+    }
     
     func configure(with movie: Movie) {
-         
-         self.titleLabel.text = movie.title
-        print("Movie title: \(movie.title)")
-         
-         let url = movie.posterURL
-         
-         if let data = try? Data(contentsOf: url) {
-             self.imageContainerView.image = UIImage(data: data)
-         }
-      }
-
+        
+        self.titleLabel.text = movie.title
+        
+        let url = movie.posterURL
+        
+        if let data = try? Data(contentsOf: url) {
+            self.imageContainerView.image = UIImage(data: data)
+        }
+    }
+    
 }

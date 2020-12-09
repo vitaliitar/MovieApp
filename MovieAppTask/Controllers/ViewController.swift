@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AlertDisplayer {
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -18,42 +18,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     private let movieService = MovieStore.shared
     private var movieId: Int?
     
-    private func showAlert(title: String, message: String) {
-         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-
-            alert.addAction(UIAlertAction(title: "Try again",
-                                          style: UIAlertAction.Style.default,
-                                          handler: {(_: UIAlertAction!) in
-            }))
-            self.present(alert, animated: true, completion: nil)
-     }
-    
     @IBAction func findMovies(_ sender: UITextField) {
         let searchValue = textField.text!
-             if (searchValue.isEmpty) {
-                 showAlert(title: "Error", message: "Enter correct movie name")
-                 return
-             }
-             
-             movieService.searchMovie(query: searchValue) { (result) in
-                 switch result {
-                     case .success(let response):
-                         self.movies = response.results
-                         self.tableView.reloadSections([0], with: .none)
-                         
-                         if (self.movies.count == 0) {
-                             self.errorField.text = "Nothing found by \(searchValue)"
-                         }
-                         else {
-                            self.errorField.text = ""
-                         }
-
-                     case .failure(let error):
-                        self.showAlert(title: "Error", message: "\(error)")
-                 }
-             }
+        if searchValue.isEmpty {
+            return
+        }
+        
+        movieService.searchMovie(query: searchValue) { (result) in
+            switch result {
+            case .success(let response):
+                self.movies = response.results
+                self.tableView.reloadSections([0], with: .none)
+                
+                if self.movies.count == 0 {
+                    self.errorField.text = "Nothing found by \(searchValue)"
+                } else {
+                    self.errorField.text = ""
+                }
+                
+            case .failure(let error):
+                let title = "Error"
+                
+                let action = UIAlertAction(title: "Incorrect data", style: .default)
+                
+                self.displayAlert(with: title, message: error.localizedDescription, actions: [action])
+            }
+        }
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +53,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.dataSource = self
     }
     
-
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 500
     }
@@ -80,20 +70,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
+        
         movieId = movies[indexPath.item].id
         
         performSegue(withIdentifier: "goDetailsView", sender: nil)
         
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.destination is DetailsViewController
-        {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is DetailsViewController {
             let vc = segue.destination as? DetailsViewController
             vc?.movieId = movieId
         }
     }
 }
-

@@ -1,0 +1,13 @@
+line_length:
+- 200 # warning
+- 300 # error
+
+disabled_rules:
+- force_cast
+- identifier_name
+- switch_case_alignment
+- trailing_whitespace
+- unused_optional_binding
+
+excluede:
+- MovieAppTask/SceneDelegate.swift

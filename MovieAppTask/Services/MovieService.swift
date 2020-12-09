@@ -9,10 +9,10 @@
 import Foundation
 
 protocol MovieService {
-    func getTopRatedMovies(completion: @escaping (Result<MovieResponse, MovieError>) -> ())
-    func getPopularMovies(page: Int, completion: @escaping (Result<MovieResponse, MovieError>) -> ())
-    func getMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> ())
-    func searchMovie(query: String, completion: @escaping (Result<MovieResponse, MovieError>) -> ())
+    func getTopRatedMovies(completion: @escaping (Result<MovieResponse, MovieError>) -> Void)
+    func getPopularMovies(page: Int, completion: @escaping (Result<MovieResponse, MovieError>) -> Void)
+    func getMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> Void)
+    func searchMovie(query: String, completion: @escaping (Result<MovieResponse, MovieError>) -> Void)
 }
 
 enum MovieError: Error, CustomNSError {
@@ -33,7 +33,7 @@ enum MovieError: Error, CustomNSError {
         }
     }
     
-    var errorUserInfo: [String : Any] {
+    var errorUserInfo: [String: Any] {
         [NSLocalizedDescriptionKey: localizedDescription]
     }
     

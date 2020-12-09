@@ -18,7 +18,7 @@ class MovieStore: MovieService {
     private let urlSession = URLSession.shared
     private let jsonDecoder = Utils.jsonDecoder
     
-    func getMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> ()) {
+    func getMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> Void) {
         guard let url = URL(string: "\(baseAPIURL)/movie/\(id)") else {
             completion(.failure(.invalidEndpoint))
             return
@@ -28,7 +28,7 @@ class MovieStore: MovieService {
         ], completion: completion)
     }
     
-    func searchMovie(query: String, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
+    func searchMovie(query: String, completion: @escaping (Result<MovieResponse, MovieError>) -> Void) {
         guard let url = URL(string: "\(baseAPIURL)/search/movie") else {
             completion(.failure(.invalidEndpoint))
             return
@@ -41,26 +41,26 @@ class MovieStore: MovieService {
         ], completion: completion)
     }
     
-    func getTopRatedMovies(completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
-         guard let url = URL(string: "\(baseAPIURL)/movie/top_rated") else {
-               completion(.failure(.invalidEndpoint))
-               return
-           }
-           self.loadURLAndDecode(url: url, completion: completion)
+    func getTopRatedMovies(completion: @escaping (Result<MovieResponse, MovieError>) -> Void) {
+        guard let url = URL(string: "\(baseAPIURL)/movie/top_rated") else {
+            completion(.failure(.invalidEndpoint))
+            return
+        }
+        self.loadURLAndDecode(url: url, completion: completion)
     }
     
-    func getPopularMovies(page: Int, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
+    func getPopularMovies(page: Int, completion: @escaping (Result<MovieResponse, MovieError>) -> Void) {
         guard let url = URL(string: "\(baseAPIURL)/movie/popular") else {
             completion(.failure(.invalidEndpoint))
             return
         }
         self.loadURLAndDecode(url: url, params: [
-                                        "page": "\(page)"
-                                        ],
-                                        completion: completion)
+            "page": "\(page)"
+            ],
+                              completion: completion)
     }
     
-    private func loadURLAndDecode<D: Decodable>(url: URL, params: [String: String]? = nil, completion: @escaping (Result<D, MovieError>) -> ()) {
+    private func loadURLAndDecode<D: Decodable>(url: URL, params: [String: String]? = nil, completion: @escaping (Result<D, MovieError>) -> Void) {
         guard var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             completion(.failure(.invalidEndpoint))
             return
@@ -105,7 +105,7 @@ class MovieStore: MovieService {
         }.resume()
     }
     
-    private func executeCompletionHandlerInMainThread<D: Decodable>(with result: Result<D, MovieError>, completion: @escaping (Result<D, MovieError>) -> ()) {
+    private func executeCompletionHandlerInMainThread<D: Decodable>(with result: Result<D, MovieError>, completion: @escaping (Result<D, MovieError>) -> Void) {
         DispatchQueue.main.async {
             completion(result)
         }

@@ -7,7 +7,6 @@ target 'MovieAppTask' do
 
   # Pods for MovieAppTask
 
-  pod 'Alamofire'
   pod 'SwiftLint'
 
 end

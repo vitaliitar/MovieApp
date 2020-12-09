@@ -8,122 +8,120 @@
 
 import UIKit
 
-
 class CircularProgressView: UIView {
     @IBOutlet weak var circleView: UIView!
     private var progressLayer = CAShapeLayer()
       private var trackLayer = CAShapeLayer()
       private var textLayer = CATextLayer()
-      
+
       override init(frame: CGRect) {
           super.init(frame: frame)
-          commonInit()
+          initCircleProgressView()
       }
 
       required init?(coder aDecoder: NSCoder) {
           super.init(coder: aDecoder)
-          commonInit()
+          initCircleProgressView()
       }
-    
-    private func commonInit() {
+
+    private func initCircleProgressView() {
 
          Bundle.main.loadNibNamed("CircularProgressView", owner: self, options: nil)
-        
+
          self.backgroundColor = UIColor.clear
          self.layer.cornerRadius = self.frame.size.width / 2
-         
+
          trackLayer = createTrackLayer()
-         
+
          layer.addSublayer(trackLayer)
-         
+
          progressLayer = createProgressLayer()
-         
+
          layer.addSublayer(progressLayer)
-                 
+
          textLayer = createTextLayer(textColor: UIColor.black)
 
          layer.addSublayer(textLayer)
-        
+
          addSubview(circleView)
-        
+
          circleView.frame = self.bounds
          circleView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
-    
-      
+
       var progress: CGFloat = 0 {
          didSet {
           progressLayer.strokeEnd = progress
            didProgressUpdated()
          }
        }
-      
+
       var progressColor = UIColor.white {
           didSet {
               print(progressColor.cgColor)
               progressLayer.strokeColor = progressColor.cgColor
           }
       }
-      
+
       var trackColor = UIColor.gray {
             didSet {
                 trackLayer.strokeColor = trackColor.cgColor
             }
       }
-      
+
       private func createCircularPath() -> UIBezierPath {
 
           let circlePath = UIBezierPath(arcCenter: CGPoint(x: frame.size.width/2, y: frame.size.height/2), radius: (frame.size.width - 1.5)/2,
                                         startAngle: CGFloat(-0.5 * .pi), endAngle: CGFloat(1.5 * .pi), clockwise: true)
 
           return circlePath
-              
+
       }
-      
+
       private func createTrackLayer() -> CAShapeLayer {
-          
+
           let layer = CAShapeLayer()
-          
+
           let circlePath = createCircularPath()
-          
+
           layer.path = circlePath.cgPath
           layer.fillColor = UIColor.clear.cgColor
           layer.strokeColor = trackColor.cgColor
           layer.lineWidth = 10.0
           layer.strokeEnd = 1.0
-          
+
           return layer
       }
-      
+
       private func createProgressLayer() -> CAShapeLayer {
-          
+
           let layer = CAShapeLayer()
-          
+
           let circlePath = createCircularPath()
-          
+
           layer.path = circlePath.cgPath
           layer.fillColor = UIColor.clear.cgColor
           layer.strokeColor = progressColor.cgColor
           layer.lineWidth = 10.0
           layer.strokeEnd = progress
-          
+
           return layer
       }
-      
+
       private func createTextLayer(textColor: UIColor) -> CATextLayer {
 
         let width = frame.size.width
         let height = frame.size.height
 
-        let _fontSize = min(width, height) / 4 - 5
-        let _offset = min(width, height) * 0.1
+        let fontSize = min(width, height) / 4 - 5
+        let offset = min(width, height) * 0.1
 
         let layer = CATextLayer()
         layer.string = "\(Int(progress * 100))%"
         layer.backgroundColor = UIColor.white.cgColor
         layer.foregroundColor = textColor.cgColor
-        layer.fontSize = _fontSize
-        layer.frame = CGRect(x: width / 4, y: (height - _fontSize - _offset) / 2, width: width / 2, height: height / 2)
+        layer.fontSize = fontSize
+        layer.frame = CGRect(x: width / 4, y: (height - fontSize - offset) / 2, width: width / 2, height: height / 2)
         layer.alignmentMode = .center
 
         return layer
@@ -133,7 +131,7 @@ class CircularProgressView: UIView {
 
         textLayer.string = "\(Int(progress * 100))%"
         progressLayer.strokeEnd = progress
-          
+
           switch progress {
              case 0...0.35:
                  progressLayer.strokeColor = UIColor.red.cgColor
@@ -150,17 +148,17 @@ class CircularProgressView: UIView {
       }
 
       func setProgressWithAnimation(duration: TimeInterval) {
-          
+
           let animation = CABasicAnimation(keyPath: "strokeEnd")
-          
+
           animation.duration = duration
           animation.fromValue = 0
           animation.toValue = progress
           animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
-          
+
           progressLayer.strokeEnd = CGFloat(progress)
-          
+
           progressLayer.add(animation, forKey: "animateprogress")
-          
+
       }
 }

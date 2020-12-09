@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,7 @@
 		F64ECBAD2575970F00054483 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64ECBAC2575970F00054483 /* Utils.swift */; };
 		F64F25A1257E827800354524 /* CircularProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F64F25A0257E827800354524 /* CircularProgressView.xib */; };
 		F64F25AB257EC21B00354524 /* SectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F25AA257EC21B00354524 /* SectionsController.swift */; };
+		F65A2F5A2580F8480058D006 /* AlertDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A2F592580F8480058D006 /* AlertDisplayer.swift */; };
 		F690174C25779A200064F2D7 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F690174B25779A200064F2D7 /* MovieService.swift */; };
 		F690174E25779A5D0064F2D7 /* MovieStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F690174D25779A5D0064F2D7 /* MovieStore.swift */; };
 		F69017522577A0AB0064F2D7 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69017502577A0AB0064F2D7 /* TableViewCell.swift */; };
@@ -51,6 +52,7 @@
 		F64ECBAC2575970F00054483 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		F64F25A0257E827800354524 /* CircularProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircularProgressView.xib; sourceTree = "<group>"; };
 		F64F25AA257EC21B00354524 /* SectionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsController.swift; sourceTree = "<group>"; };
+		F65A2F592580F8480058D006 /* AlertDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplayer.swift; sourceTree = "<group>"; };
 		F690174B25779A200064F2D7 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		F690174D25779A5D0064F2D7 /* MovieStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStore.swift; sourceTree = "<group>"; };
 		F69017502577A0AB0064F2D7 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 		F64ECB8825756C6F00054483 /* MovieAppTask */ = {
 			isa = PBXGroup;
 			children = (
+				F65A2F582580F81F0058D006 /* Extensions */,
 				F64DC76C257FAC40008D890D /* ViewModels */,
 				F64ECBAF2575978B00054483 /* Services */,
 				F64ECBAE2575973E00054483 /* Utils */,
@@ -196,6 +199,14 @@
 			path = CircularProgressView;
 			sourceTree = "<group>";
 		};
+		F65A2F582580F81F0058D006 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F65A2F592580F8480058D006 /* AlertDisplayer.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F690174F2577A0870064F2D7 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -212,11 +223,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F64ECB9D25756C7800054483 /* Build configuration list for PBXNativeTarget "MovieAppTask" */;
 			buildPhases = (
+				F65A2F5B2580FDEB0058D006 /* ShellScript */,
 				A7F16F98740D3C13C247D361 /* [CP] Check Pods Manifest.lock */,
 				F64ECB8225756C6F00054483 /* Sources */,
 				F64ECB8325756C6F00054483 /* Frameworks */,
 				F64ECB8425756C6F00054483 /* Resources */,
-				F9CA52B71D400D76BC3B44BE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -299,22 +310,22 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F9CA52B71D400D76BC3B44BE /* [CP] Embed Pods Frameworks */ = {
+		F65A2F5B2580FDEB0058D006 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MovieAppTask/Pods-MovieAppTask-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+			);
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MovieAppTask/Pods-MovieAppTask-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieAppTask/Pods-MovieAppTask-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -326,6 +337,7 @@
 				F64ECBAB257590D900054483 /* Movie.swift in Sources */,
 				F64ECB8E25756C6F00054483 /* ViewController.swift in Sources */,
 				F64ECB9425756C6F00054483 /* MovieAppTask.xcdatamodeld in Sources */,
+				F65A2F5A2580F8480058D006 /* AlertDisplayer.swift in Sources */,
 				F69017572577B4FA0064F2D7 /* DetailsViewController.swift in Sources */,
 				F64ECBAD2575970F00054483 /* Utils.swift in Sources */,
 				F690174E25779A5D0064F2D7 /* MovieStore.swift in Sources */,

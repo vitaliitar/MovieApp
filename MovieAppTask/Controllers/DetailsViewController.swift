@@ -8,8 +8,8 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController {
-
+class DetailsViewController: UIViewController, AlertDisplayer {
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
@@ -21,26 +21,21 @@ class DetailsViewController: UIViewController {
     private var movie: Movie?
     private let movieService = MovieStore.shared
     var movieId: Int?
-   
-    private func showAlert(title: String, message: String) {
-           let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-
-              alert.addAction(UIAlertAction(title: "Try again",
-                                            style: UIAlertAction.Style.default,
-                                            handler: {(_: UIAlertAction!) in
-              }))
-              self.present(alert, animated: true, completion: nil)
-       }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         movieService.getMovie(id: movieId!) { (result) in
             switch result {
             case .success(let response):
                 self.configure(with: response)
             case .failure(let error):
-                self.showAlert(title: "Error", message: "\(error)")
+                let title = "Error"
+                
+                let action = UIAlertAction(title: "OK", style: .default)
+                
+                self.displayAlert(with: title, message: error.localizedDescription, actions: [action])
+                
             }
         }
     }
@@ -63,8 +58,8 @@ class DetailsViewController: UIViewController {
         self.releaseDateLabel.text = model.releaseDate
         
         self.circleProgessView.progress = CGFloat(model.rating) / 100
-                           
+        
         self.circleProgessView.setProgressWithAnimation(duration: 2.0)
     }
-
+    
 }

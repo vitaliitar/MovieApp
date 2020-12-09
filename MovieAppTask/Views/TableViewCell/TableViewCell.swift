@@ -9,7 +9,7 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
@@ -18,9 +18,9 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     override func prepareForReuse() {
-      super.prepareForReuse()
-      
-      configure(with: .none)
+        super.prepareForReuse()
+        
+        configure(with: .none)
     }
     
     override func awakeFromNib() {
@@ -29,7 +29,7 @@ class TableViewCell: UITableViewCell {
         indicatorView.hidesWhenStopped = true
         indicatorView.color = UIColor.green
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -43,21 +43,18 @@ class TableViewCell: UITableViewCell {
     func configure(with movie: Movie?) {
         if let movie = movie {
             self.titleLabel.text = movie.title
-           self.yearLabel.text = movie.yearText
-           
-           
-           let url = movie.posterURL
-           
-           if let data = try? Data(contentsOf: url) {
-               self.posterImageView.image = UIImage(data: data)
-           }
-           
-           self.circleProgressView.progress = CGFloat(movie.rating) / 100
+            self.yearLabel.text = movie.yearText
+            
+            let url = movie.posterURL
+            
+            if let data = try? Data(contentsOf: url) {
+                self.posterImageView.image = UIImage(data: data)
+            }
+            
+            self.circleProgressView.progress = CGFloat(movie.rating) / 100
             indicatorView.stopAnimating()
-
-        }
-        else {
-            // todo active indicator
+            
+        } else {
             indicatorView.startAnimating()
         }
     }
