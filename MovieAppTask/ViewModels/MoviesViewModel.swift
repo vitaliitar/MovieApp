@@ -54,10 +54,8 @@ final class MoviesViewModel {
                     self.currentPage += 1
                     self.isFetchInProgress = false
 
-                    self.total = 100
+                    self.total = 1000
                     self.popularMovies.append(contentsOf: response.results)
-                    print("Added")
-                    print("PopularMovies: \(self.popularMovies.count)")
 
                     if response.page > 1 {
                         let indexPathsToReload = self.calculateIndexPathsToReload(from: response.results)

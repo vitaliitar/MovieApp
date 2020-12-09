@@ -27,7 +27,6 @@ class SectionsController: UIViewController, AlertDisplayer {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        registerNib()
         
         movieService.getTopRatedMovies { (result) in
             switch result {
@@ -102,6 +101,24 @@ extension SectionsController: UICollectionViewDataSource {
         return UICollectionViewCell()
     }
     
+}
+
+extension SectionsController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let cell: CollectionViewCell = Bundle.main.loadNibNamed(CollectionViewCell.nibName,
+                                                                      owner: self,
+                                                                      options: nil)?.first as? CollectionViewCell else {
+            return CGSize.zero
+        }
+
+        cell.configure(with: topRatedMovies[indexPath.row])
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        let size: CGSize = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        return CGSize(width: size.width, height: 130)
+    }
 }
 
 extension SectionsController: UITableViewDataSource {
