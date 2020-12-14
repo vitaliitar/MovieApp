@@ -8,6 +8,7 @@
 
 import UIKit
 
+#warning("Naming should be corrected")
 class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageContainerView: UIImageView!

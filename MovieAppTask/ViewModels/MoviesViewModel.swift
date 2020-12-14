@@ -36,6 +36,8 @@ final class MoviesViewModel {
   }
 
   func movie(at index: Int) -> Movie {
+    #warning("Strange behaviour without internet and crashes")
+
     return popularMovies[index]
   }
 
@@ -54,6 +56,7 @@ final class MoviesViewModel {
                     self.currentPage += 1
                     self.isFetchInProgress = false
 
+                    #warning("Why 10000?")
                     self.total = 10000
                     self.popularMovies.append(contentsOf: response.results)
 

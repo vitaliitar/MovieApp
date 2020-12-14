@@ -67,6 +67,10 @@ class SectionsController: UIViewController, AlertDisplayer {
         
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+          return 150
+      }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is DetailsViewController {
             let vc = segue.destination as? DetailsViewController
@@ -77,8 +81,8 @@ class SectionsController: UIViewController, AlertDisplayer {
 
 extension SectionsController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        movieId = viewModel.movie(at: indexPath.row).id
-        
+        movieId = topRatedMovies[indexPath.row].id
+
         performSegue(withIdentifier: "goToDetailsView", sender: nil)
     }
 }
@@ -117,16 +121,19 @@ extension SectionsController: UICollectionViewDelegateFlowLayout {
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
         let size: CGSize = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-        return CGSize(width: size.width, height: 130)
+        #warning("Some images looks bad, the reason is with wrong logic for calculation")
+
+        return CGSize(width: 100, height: 130)
     }
 }
 
 extension SectionsController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        #warning("This value should not be hardcoded")
+
         return viewModel.totalCount
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
         

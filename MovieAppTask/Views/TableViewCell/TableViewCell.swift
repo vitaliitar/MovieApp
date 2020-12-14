@@ -19,6 +19,7 @@ class TableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        #warning("clear values before")
         
         configure(with: .none)
     }

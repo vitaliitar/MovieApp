@@ -25,6 +25,7 @@ class CircularProgressView: UIView {
       }
 
     private func initCircleProgressView() {
+        #warning(".xib file is empty")
 
          Bundle.main.loadNibNamed("CircularProgressView", owner: self, options: nil)
 
