@@ -18,11 +18,35 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
+    private let coreDataService = CoreDataStore.shared
+    private let movieService = MovieStore.shared
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         #warning("clear values before")
         
         configure(with: .none)
+    }
+    
+    @IBAction func changeFavorite(_ sender: UIButton) {
+        print(sender.tag)
+        let containsInFavorite = coreDataService.checkIfContains(id: sender.tag)
+        
+        if containsInFavorite {
+            favoriteButton.setImage(UIImage(named: "heart.png"), for: .normal)
+            // post requst and local coredata
+            coreDataService.deleteById(id: sender.tag)
+            movieService.markFavourite(mediaId: sender.tag, favourite: false) { success in
+                print(success)
+            }
+            
+        } else {
+            favoriteButton.setImage(UIImage(named: "filled_heart.png"), for: .normal)
+            coreDataService.save(id: sender.tag)
+            movieService.markFavourite(mediaId: sender.tag, favourite: true) { success in
+                print("added: \(success)")
+            }
+        }
     }
     
     override func awakeFromNib() {
@@ -51,6 +75,16 @@ class TableViewCell: UITableViewCell {
             
             if let data = try? Data(contentsOf: url) {
                 self.posterImageView.image = UIImage(data: data)
+            }
+            
+            self.favoriteButton.tag = movie.id
+            
+            let containsInFavorite = coreDataService.checkIfContains(id: movie.id)
+            
+            if containsInFavorite {
+                favoriteButton.setImage(UIImage(named: "filled_heart.png"), for: .normal)
+            } else {
+                favoriteButton.setImage(UIImage(named: "heart.png"), for: .normal)
             }
             
             self.circleProgressView.progress = CGFloat(movie.rating) / 100

@@ -1,24 +1,19 @@
 //
-//  CoreDataExtension.swift
+//  MovieStore.swift
 //  MovieAppTask
 //
-//  Created by Vitalii Tar on 12/15/20.
+//  Created by Vitalii Tar on 12/2/20.
 //  Copyright © 2020 Vitalii Tar. All rights reserved.
 //
 
 import Foundation
-import UIKit
 import CoreData
+import UIKit
 
-protocol CoreDataExtension {
-    func save(id: Int)
-    func retrieve()
-    func deleteFromCoreData()
-    func deleteById(id: Int)
-    func checkIfContains(id: Int) -> Bool
-}
-
-extension CoreDataExtension where Self: UIViewController {
+class CoreDataStore: CoreDataService {
+    
+    static let shared = CoreDataStore()
+    private init() {}
     
     func save(id: Int) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -37,11 +32,11 @@ extension CoreDataExtension where Self: UIViewController {
             try managedContext.save()
         } catch {
             //            print("Failed saving")
-            let title = "Error"
-            
-            let action = UIAlertAction(title: "OK", style: .default)
-            
-            displayAlert(with: title, message: "Failed saving", actions: [action])
+//            let title = "Error"
+//
+//            let action = UIAlertAction(title: "OK", style: .default)
+//
+//            displayAlert(with: title, message: "Failed saving", actions: [action])
         }
     }
     
@@ -81,23 +76,23 @@ extension CoreDataExtension where Self: UIViewController {
             do {
                 try managedContext.save()
             } catch let error as NSError {
-                
-                let title = "Error"
-                
-                let action = UIAlertAction(title: "OK", style: .default)
-                
-                displayAlert(with: title, message: "Could not save", actions: [action])
+//
+//                let title = "Error"
+//
+//                let action = UIAlertAction(title: "OK", style: .default)
+//
+//                displayAlert(with: title, message: "Could not save", actions: [action])
                 
                 print("Could not save, \(error), \(error.userInfo)")
             }
             
         } catch _ as NSError {
             
-            let title = "Error"
-            
-            let action = UIAlertAction(title: "OK", style: .default)
-            
-            displayAlert(with: title, message: "Could not save", actions: [action])
+//            let title = "Error"
+//            
+//            let action = UIAlertAction(title: "OK", style: .default)
+//            
+//            displayAlert(with: title, message: "Could not save", actions: [action])
             
         }
     }
@@ -126,20 +121,20 @@ extension CoreDataExtension where Self: UIViewController {
                 try managedContext.save()
             } catch _ as NSError {
                 
-                let title = "Error"
-                
-                let action = UIAlertAction(title: "OK", style: .default)
-                
-                displayAlert(with: title, message: "Could not save", actions: [action])
+//                let title = "Error"
+//
+//                let action = UIAlertAction(title: "OK", style: .default)
+//
+//                displayAlert(with: title, message: "Could not save", actions: [action])
             }
             
         } catch _ as NSError {
             
-            let title = "Error"
-            
-            let action = UIAlertAction(title: "OK", style: .default)
-            
-            displayAlert(with: title, message: "Failed saving", actions: [action])
+//            let title = "Error"
+//
+//            let action = UIAlertAction(title: "OK", style: .default)
+//
+//            displayAlert(with: title, message: "Failed saving", actions: [action])
         }
     }
     
@@ -165,23 +160,12 @@ extension CoreDataExtension where Self: UIViewController {
             
         } catch _ as NSError {
             
-            let title = "Error"
-            
-            let action = UIAlertAction(title: "OK", style: .default)
-            
-            displayAlert(with: title, message: "Failed to get data", actions: [action])
+//            let title = "Error"
+//
+//            let action = UIAlertAction(title: "OK", style: .default)
+//
+//            displayAlert(with: title, message: "Failed to get data", actions: [action])
         }
         return false
-    }
-    private func displayAlert(with title: String, message: String, actions: [UIAlertAction]? = nil) {
-        guard presentedViewController == nil else {
-            return
-        }
-        
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        actions?.forEach { action in
-            alertController.addAction(action)
-        }
-        present(alertController, animated: true)
     }
 }

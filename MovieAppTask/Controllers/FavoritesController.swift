@@ -9,9 +9,10 @@
 import UIKit
 import CoreData
 
-class FavoritesController: UIViewController, AlertDisplayer, CoreDataExtension {
+class FavoritesController: UIViewController, AlertDisplayer {
     
     private let movieService = MovieStore.shared
+    private let coreDataService = CoreDataStore.shared
     private var movieId: Int?
     
     private var viewModel: FavoritesViewModel!
@@ -30,15 +31,15 @@ class FavoritesController: UIViewController, AlertDisplayer, CoreDataExtension {
         //        movieService.markFavourite(mediaId: 551, favourite: true) { success in
         //            print(success)
         //        }
-        self.deleteFromCoreData()
-        self.save(id: 1)
-        //        self.retrieve()
-        self.save(id: 3)
-        //        self.retrieve()
-        self.deleteById(id: 1)
-        self.retrieve()
+//        coreDataService.deleteFromCoreData()
+//        coreDataService.save(id: 550)
+//        //        self.retrieve()
+//        coreDataService.save(id: 3)
+//        //        self.retrieve()
+////        coreDataService.deleteById(id: 1)
+//        coreDataService.retrieve()
         
-        print(self.checkIfContains(id: 1))
+//        print(coreDataService.checkIfContains(id: 1))
         
         activityIndicatorView.color = UIColor.green
         activityIndicatorView.startAnimating()
