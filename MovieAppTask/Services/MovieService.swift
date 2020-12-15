@@ -12,7 +12,10 @@ protocol MovieService {
     func getTopRatedMovies(completion: @escaping (Result<MovieResponse, MovieError>) -> Void)
     func getPopularMovies(page: Int, completion: @escaping (Result<MovieResponse, MovieError>) -> Void)
     func getMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> Void)
+    func getFavoriteMovies(page: Int, completion: @escaping (Result<MovieResponse, MovieError>) -> Void)
     func searchMovie(query: String, completion: @escaping (Result<MovieResponse, MovieError>) -> Void)
+    func markFavourite(mediaId: Int, favourite: Bool, completion: @escaping (Bool) -> Void)
+    
 }
 
 enum MovieError: Error, CustomNSError {

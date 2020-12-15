@@ -14,7 +14,9 @@ class MovieStore: MovieService {
     private init() {}
     
     private let apiKey = "5113bc5f30e7bd2ae86759d199533bc6"
+    private let sessionId = "6bfd39fda80dfc4443a1790a5f10b554b2b19eee"
     private let baseAPIURL = "https://api.themoviedb.org/3"
+    private let accountId = "9872680"
     private let urlSession = URLSession.shared
     private let jsonDecoder = Utils.jsonDecoder
     
@@ -26,6 +28,54 @@ class MovieStore: MovieService {
         self.loadURLAndDecode(url: url, params: [
             "append_to_response": "videos,credits"
         ], completion: completion)
+    }
+    
+    func getFavoriteMovies(page: Int, completion: @escaping (Result<MovieResponse, MovieError>) -> Void) {
+        guard let url = URL(string: "\(baseAPIURL)/account/\(accountId)/favorite/movies") else {
+            completion(.failure(.invalidEndpoint))
+            return
+        }
+        
+        self.loadURLAndDecode(url: url, params: [
+            "session_id": "\(sessionId)",
+            "page": "\(page)"
+            ], completion: completion)
+
+    }
+    
+    func markFavourite(mediaId: Int, favourite: Bool, completion: @escaping (Bool) -> Void) {
+        let json: [String: Any] = ["media_type": "movie", "media_id": mediaId, "favorite": favourite]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
+//        jsonData?.printJSON()
+        
+        guard let url = URL(string: "\(baseAPIURL)/account/9872680/favorite?api_key=\(apiKey)&session_id=\(sessionId)") else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        request.httpBody = jsonData
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                completion(false)
+                return
+            }
+
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                if responseJSON["success"] as? Int == 1 {
+                    completion(true)
+                } else {
+                    completion(false)
+                }
+            }
+        }.resume()
+        
     }
     
     func searchMovie(query: String, completion: @escaping (Result<MovieResponse, MovieError>) -> Void) {
@@ -110,4 +160,5 @@ class MovieStore: MovieService {
             completion(result)
         }
     }
+    
 }

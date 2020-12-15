@@ -8,6 +8,43 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Favorites-->
+        <scene sceneID="V66-Gy-aVC">
+            <objects>
+                <viewController id="hDA-Du-vUd" customClass="FavoritesController" customModule="MovieAppTask" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ayq-Ud-fIm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A7y-go-ats">
+                                <rect key="frame" x="0.0" y="54" width="414" height="709"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="12e-zN-8RM">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="1BZ-z3-DFT" firstAttribute="trailing" secondItem="A7y-go-ats" secondAttribute="trailing" id="4nJ-zl-peC"/>
+                            <constraint firstItem="A7y-go-ats" firstAttribute="top" secondItem="1BZ-z3-DFT" secondAttribute="top" constant="10" id="oFX-Bl-zlX"/>
+                            <constraint firstItem="1BZ-z3-DFT" firstAttribute="bottom" secondItem="A7y-go-ats" secondAttribute="bottom" constant="50" id="ps7-Hf-8Cc"/>
+                            <constraint firstItem="A7y-go-ats" firstAttribute="leading" secondItem="1BZ-z3-DFT" secondAttribute="leading" id="xFB-Ay-Xff"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1BZ-z3-DFT"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" id="e5t-YE-aqO"/>
+                    <connections>
+                        <outlet property="activityIndicatorView" destination="12e-zN-8RM" id="FJc-Kg-sT7"/>
+                        <outlet property="tableFavoritesView" destination="A7y-go-ats" id="wcl-Jf-Hw5"/>
+                        <segue destination="y8W-Rc-7mU" kind="show" identifier="goDetails" id="944-LU-h6F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7rO-Eq-zIR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1004" y="-978"/>
+        </scene>
         <!--Main-->
         <scene sceneID="nY8-Wb-jzp">
             <objects>
@@ -88,11 +125,12 @@
                     <connections>
                         <segue destination="Pqn-fg-3RT" kind="relationship" relationship="viewControllers" id="0dH-qk-zoq"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="KTe-Mh-S7V"/>
+                        <segue destination="hDA-Du-vUd" kind="relationship" relationship="viewControllers" id="39t-zr-YdJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d8q-Ja-rWn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1783" y="29"/>
+            <point key="canvasLocation" x="-2717" y="-104"/>
         </scene>
         <!--Search-->
         <scene sceneID="tne-QT-ifu">
@@ -265,9 +303,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fJ9-cy-vDd"/>
+        <segue reference="944-LU-h6F"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="table" catalog="system" width="128" height="93"/>
     </resources>

@@ -1,29 +1,29 @@
 //
-//  MoviesViewModel.swift
+//  FavoritesViewModel.swift
 //  MovieAppTask
 //
-//  Created by Vitalii Tar on 12/8/20.
+//  Created by Vitalii Tar on 12/15/20.
 //  Copyright © 2020 Vitalii Tar. All rights reserved.
 //
 
 import Foundation
 
-protocol MoviesViewModelDelegate: class {
+protocol FavoritesViewModelDelegate: class {
   func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?)
   func onFetchFailed(with reason: String)
 }
 
-final class MoviesViewModel {
-  private weak var delegate: MoviesViewModelDelegate?
+final class FavoritesViewModel {
+  private weak var delegate: FavoritesViewModelDelegate?
 
-  private var popularMovies: [Movie] = []
+  private var favoriteMovies: [Movie] = []
   private var currentPage = 1
   private var total = 0
   private var isFetchInProgress = false
 
   private let movieService = MovieStore.shared
 
-  init(delegate: MoviesViewModelDelegate) {
+  init(delegate: FavoritesViewModelDelegate) {
     self.delegate = delegate
   }
 
@@ -32,13 +32,13 @@ final class MoviesViewModel {
   }
 
   var currentCount: Int {
-    return popularMovies.count
+    return favoriteMovies.count
   }
 
   func movie(at index: Int) -> Movie {
     #warning("Strange behaviour without internet and crashes")
 
-    return popularMovies[index]
+    return favoriteMovies[index]
   }
 
   func fetchMovies() {
@@ -48,7 +48,7 @@ final class MoviesViewModel {
 
     isFetchInProgress = true
 
-    movieService.getPopularMovies(page: currentPage) { result in
+    movieService.getFavoriteMovies(page: currentPage) { result in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
@@ -57,8 +57,8 @@ final class MoviesViewModel {
                     self.isFetchInProgress = false
 
                     #warning("Why 10000?")
-                    self.total = 10000
-                    self.popularMovies.append(contentsOf: response.results)
+                    self.total = 2
+                    self.favoriteMovies.append(contentsOf: response.results)
 
                     if response.page > 1 {
                         let indexPathsToReload = self.calculateIndexPathsToReload(from: response.results)
@@ -76,7 +76,7 @@ final class MoviesViewModel {
   }
 
   private func calculateIndexPathsToReload(from newMovies: [Movie]) -> [IndexPath] {
-    let startIndex = popularMovies.count - newMovies.count
+    let startIndex = favoriteMovies.count - newMovies.count
     let endIndex = startIndex + newMovies.count
     return (startIndex..<endIndex).map { IndexPath(row: $0, section: 0) }
   }

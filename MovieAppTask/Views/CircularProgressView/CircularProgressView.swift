@@ -119,7 +119,7 @@ class CircularProgressView: UIView {
 
         let layer = CATextLayer()
         layer.string = "\(Int(progress * 100))%"
-        layer.backgroundColor = UIColor.white.cgColor
+        layer.backgroundColor = UIColor.clear.cgColor
         layer.foregroundColor = textColor.cgColor
         layer.fontSize = fontSize
         layer.frame = CGRect(x: width / 4, y: (height - fontSize - offset) / 2, width: width / 2, height: height / 2)
