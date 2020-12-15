@@ -7,12 +7,9 @@
 //
 
 import UIKit
+import CoreData
 
-// I decided to not use pagination
-// because the data about favorite movie is not contains in movies
-// which returns by popular top rated etc
-
-class FavoritesController: UIViewController, AlertDisplayer {
+class FavoritesController: UIViewController, AlertDisplayer, CoreDataExtension {
     
     private let movieService = MovieStore.shared
     private var movieId: Int?
@@ -24,7 +21,6 @@ class FavoritesController: UIViewController, AlertDisplayer {
     
     private var shouldShowLoadingCell = false
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,14 +30,21 @@ class FavoritesController: UIViewController, AlertDisplayer {
         //        movieService.markFavourite(mediaId: 551, favourite: true) { success in
         //            print(success)
         //        }
+        self.deleteFromCoreData()
+        self.save(id: 1)
+        //        self.retrieve()
+        self.save(id: 3)
+        //        self.retrieve()
+        self.deleteById(id: 1)
+        self.retrieve()
         
-
+        print(self.checkIfContains(id: 1))
+        
         activityIndicatorView.color = UIColor.green
         activityIndicatorView.startAnimating()
         
         tableFavoritesView.isHidden = true
         tableFavoritesView.separatorColor = UIColor.green
-        
         
         tableFavoritesView.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.identifier)
         
@@ -66,7 +69,6 @@ class FavoritesController: UIViewController, AlertDisplayer {
     }
     
 }
-
 
 extension FavoritesController: UITableViewDataSource {
     
@@ -137,7 +139,6 @@ extension FavoritesController: FavoritesViewModelDelegate {
         
     }
 }
-
 
 private extension FavoritesController {
     func isLoadingCell(for indexPath: IndexPath) -> Bool {
