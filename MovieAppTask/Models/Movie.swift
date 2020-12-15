@@ -11,7 +11,7 @@ import Foundation
 struct MovieResponse: Decodable {
     let results: [Movie]
     let page: Int
-    let total: Int
+    let totalResults: Int
 }
 
 struct Movie: Decodable, Identifiable, Hashable {

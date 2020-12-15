@@ -56,8 +56,7 @@ final class MoviesViewModel {
                     self.currentPage += 1
                     self.isFetchInProgress = false
 
-                    #warning("Why 10000?")
-                    self.total = 10000
+                    self.total = response.totalResults
                     self.popularMovies.append(contentsOf: response.results)
 
                     if response.page > 1 {

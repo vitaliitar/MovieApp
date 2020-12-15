@@ -172,6 +172,7 @@ extension SectionsController: MoviesViewModelDelegate {
     func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
         guard let newIndexPathsToReload = newIndexPathsToReload else {
             indicatorView.stopAnimating()
+            indicatorView.isHidden = true
             
             tablePopularView.isHidden = false
             tablePopularView.reloadData()

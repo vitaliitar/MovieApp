@@ -56,8 +56,7 @@ final class FavoritesViewModel {
                     self.currentPage += 1
                     self.isFetchInProgress = false
 
-                    #warning("Why 10000?")
-                    self.total = 2
+                    self.total = response.totalResults
                     self.favoriteMovies.append(contentsOf: response.results)
 
                     if response.page > 1 {

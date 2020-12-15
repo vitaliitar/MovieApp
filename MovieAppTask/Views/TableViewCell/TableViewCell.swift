@@ -15,6 +15,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var circleProgressView: CircularProgressView!
     
+    @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     override func prepareForReuse() {

@@ -71,7 +71,6 @@ class FavoritesController: UIViewController, AlertDisplayer {
 extension FavoritesController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        #warning("This value should not be hardcoded")
         
         return viewModel.totalCount
     }
@@ -114,6 +113,7 @@ extension FavoritesController: FavoritesViewModelDelegate {
     func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
         guard let newIndexPathsToReload = newIndexPathsToReload else {
             activityIndicatorView.stopAnimating()
+            activityIndicatorView.isHidden = true
             
             tableFavoritesView.isHidden = false
             tableFavoritesView.reloadData()

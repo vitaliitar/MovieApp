@@ -52,11 +52,21 @@
                             <constraint firstAttribute="width" constant="50" id="cuY-GH-UtX"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2O5-1m-2MO">
+                        <rect key="frame" x="30" y="115" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="tBi-NM-SWJ"/>
+                            <constraint firstAttribute="height" constant="50" id="uug-PQ-3hT"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="jZ6-aB-Aat" secondAttribute="bottom" constant="5" id="DMI-kV-8Mb"/>
                     <constraint firstItem="9zV-eX-7ME" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Dnh-bB-kSV"/>
                     <constraint firstItem="jZ6-aB-Aat" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="UUJ-id-awc"/>
+                    <constraint firstItem="2O5-1m-2MO" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="10" id="ZN0-Oq-sBF"/>
+                    <constraint firstItem="2O5-1m-2MO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="cRt-bD-9BJ"/>
                     <constraint firstAttribute="trailing" secondItem="9zV-eX-7ME" secondAttribute="trailing" constant="10" id="fk5-oC-tLg"/>
                     <constraint firstItem="Km1-RB-qRF" firstAttribute="top" secondItem="6fL-RO-3wz" secondAttribute="bottom" constant="5" id="iB7-V3-FDC"/>
                     <constraint firstItem="6fL-RO-3wz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="ruk-of-1gO"/>
@@ -69,6 +79,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="circleProgressView" destination="Km1-RB-qRF" id="vNd-Xt-Bjf"/>
+                <outlet property="favoriteButton" destination="2O5-1m-2MO" id="O6a-BC-uEf"/>
                 <outlet property="indicatorView" destination="jZ6-aB-Aat" id="OWL-je-KwF"/>
                 <outlet property="posterImageView" destination="9zV-eX-7ME" id="buI-u6-TVP"/>
                 <outlet property="titleLabel" destination="6fL-RO-3wz" id="qbR-Da-59u"/>
