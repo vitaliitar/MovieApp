@@ -36,8 +36,6 @@ final class MoviesViewModel {
     }
     
     func movie(at index: Int) -> Movie {
-        #warning("Strange behaviour without internet and crashes")
-        
         return popularMovies[index]
     }
     

@@ -118,12 +118,10 @@ extension SectionsController: UICollectionViewDelegateFlowLayout {
         }
         
         cell.configure(with: topRatedMovies[indexPath.row])
-        cell.setNeedsLayout()
-        cell.layoutIfNeeded()
-        //                let size: CGSize = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
-        #warning("Some images looks bad, the reason is with wrong logic for calculation")
         
-        return CGSize(width: 100, height: 130)
+        let size: CGSize = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        
+        return CGSize(width: size.width, height: 130)
     }
 }
 

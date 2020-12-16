@@ -25,22 +25,6 @@ class FavoritesController: UIViewController, AlertDisplayer {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        
-        // query for mark as favourite
-        //        movieService.markFavourite(mediaId: 551, favourite: true) { success in
-        //            print(success)
-        //        }
-        //        coreDataService.deleteFromCoreData()
-        //        coreDataService.save(id: 550)
-        //        //        self.retrieve()
-        //        coreDataService.save(id: 3)
-        //        //        self.retrieve()
-        ////        coreDataService.deleteById(id: 1)
-        //        coreDataService.retrieve()
-        
-        //        print(coreDataService.checkIfContains(id: 1))
-        
         activityIndicatorView.color = UIColor.green
         activityIndicatorView.startAnimating()
         

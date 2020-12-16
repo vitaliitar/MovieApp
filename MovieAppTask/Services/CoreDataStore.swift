@@ -28,32 +28,7 @@ class CoreDataStore: CoreDataService {
         
         movie.setValue(id, forKey: "movieId")
         
-        do {
-            try managedContext.save()
-        } catch {
-            //            print("Failed saving")
-            //            let title = "Error"
-            //
-            //            let action = UIAlertAction(title: "OK", style: .default)
-            //
-            //            displayAlert(with: title, message: "Failed saving", actions: [action])
-        }
-    }
-    
-    func retrieve() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MovieEntity")
-        
-        let result = try? managedContext.fetch(fetchRequest)
-        
-        for data in result as! [NSManagedObject] {
-            print(data.value(forKey: "movieId")!)
-        }
+        try? managedContext.save()
         
     }
     
@@ -73,27 +48,10 @@ class CoreDataStore: CoreDataService {
                 managedContext.delete(data as! NSManagedObject)
             }
             
-            do {
-                try managedContext.save()
-            } catch let error as NSError {
-                //
-                //                let title = "Error"
-                //
-                //                let action = UIAlertAction(title: "OK", style: .default)
-                //
-                //                displayAlert(with: title, message: "Could not save", actions: [action])
-                
-                print("Could not save, \(error), \(error.userInfo)")
-            }
+            try? managedContext.save()
             
         } catch _ as NSError {
-            
-            //            let title = "Error"
-            //
-            //            let action = UIAlertAction(title: "OK", style: .default)
-            //
-            //            displayAlert(with: title, message: "Could not save", actions: [action])
-            
+            print("Error")
         }
     }
     
@@ -117,24 +75,10 @@ class CoreDataStore: CoreDataService {
                 
             }
             
-            do {
-                try managedContext.save()
-            } catch _ as NSError {
-                
-                //                let title = "Error"
-                //
-                //                let action = UIAlertAction(title: "OK", style: .default)
-                //
-                //                displayAlert(with: title, message: "Could not save", actions: [action])
-            }
+            try? managedContext.save()
             
         } catch _ as NSError {
-            
-            //            let title = "Error"
-            //
-            //            let action = UIAlertAction(title: "OK", style: .default)
-            //
-            //            displayAlert(with: title, message: "Failed saving", actions: [action])
+            print("Error")
         }
     }
     
@@ -147,25 +91,17 @@ class CoreDataStore: CoreDataService {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MovieEntity")
         
-        do {
-            let moviesId = try managedContext.fetch(fetchRequest)
-            
-            for data in moviesId as! [NSManagedObject] {
-                let value = data.value(forKey: "movieId") as! NSNumber
-                if Int(truncating: value) == id {
-                    return true
-                }
-                
+        let moviesId = try? managedContext.fetch(fetchRequest)
+        
+        for data in moviesId as! [NSManagedObject] {
+            let value = data.value(forKey: "movieId") as! NSNumber
+            if Int(truncating: value) == id {
+                return true
             }
             
-        } catch _ as NSError {
-            
-            //            let title = "Error"
-            //
-            //            let action = UIAlertAction(title: "OK", style: .default)
-            //
-            //            displayAlert(with: title, message: "Failed to get data", actions: [action])
         }
+        
         return false
     }
+    
 }

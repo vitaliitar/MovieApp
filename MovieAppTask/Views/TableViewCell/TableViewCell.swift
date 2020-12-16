@@ -14,37 +14,42 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var circleProgressView: CircularProgressView!
+    @IBOutlet weak var errorLabel: UILabel!
     
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
     private let coreDataService = CoreDataStore.shared
     private let movieService = MovieStore.shared
-        
+    
     override func prepareForReuse() {
-        super.prepareForReuse()
-        #warning("clear values before")
-        
         configure(with: .none)
+        super.prepareForReuse()        
     }
     
     @IBAction func changeFavorite(_ sender: UIButton) {
-        print(sender.tag)
         let containsInFavorite = coreDataService.checkIfContains(id: sender.tag)
         
         if containsInFavorite {
             favoriteButton.setImage(UIImage(named: "heart.png"), for: .normal)
-            // post requst and local coredata
             coreDataService.deleteById(id: sender.tag)
             movieService.markFavourite(mediaId: sender.tag, favourite: false) { success in
-                print(success)
+                if !success {
+                    self.errorLabel.text = "Error"
+                } else {
+                    self.errorLabel.text = ""
+                }
             }
             
         } else {
             favoriteButton.setImage(UIImage(named: "filled_heart.png"), for: .normal)
             coreDataService.save(id: sender.tag)
             movieService.markFavourite(mediaId: sender.tag, favourite: true) { success in
-                print("added: \(success)")
+                if !success {
+                    self.errorLabel.text = "Error"
+                } else {
+                    self.errorLabel.text = ""
+                }
             }
         }
     }

@@ -11,7 +11,6 @@ import CoreData
 
 protocol CoreDataService {
     func save(id: Int)
-    func retrieve()
     func deleteFromCoreData()
     func deleteById(id: Int)
     func checkIfContains(id: Int) -> Bool

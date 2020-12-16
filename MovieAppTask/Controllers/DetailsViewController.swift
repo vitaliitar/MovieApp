@@ -46,7 +46,6 @@ class DetailsViewController: UIViewController, AlertDisplayer {
     }
     
     @IBAction func changeFavorite(_ sender: UIButton) {
-        print(sender.tag)
         let containsInFavorite = coreDataService.checkIfContains(id: sender.tag)
         
         if containsInFavorite {
