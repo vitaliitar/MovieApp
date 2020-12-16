@@ -62,20 +62,10 @@
                             <action selector="changeFavorite:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cl0-JY-HHp"/>
                         </connections>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Muc-oM-qjj">
-                        <rect key="frame" x="10" y="166" width="50" height="0.0"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="50" id="eDc-Q1-9Gc"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="jZ6-aB-Aat" secondAttribute="bottom" constant="5" id="DMI-kV-8Mb"/>
                     <constraint firstItem="9zV-eX-7ME" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Dnh-bB-kSV"/>
-                    <constraint firstItem="Muc-oM-qjj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Idu-0o-D9b"/>
                     <constraint firstItem="jZ6-aB-Aat" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="UUJ-id-awc"/>
                     <constraint firstItem="2O5-1m-2MO" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="10" id="ZN0-Oq-sBF"/>
                     <constraint firstItem="2O5-1m-2MO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="10" id="cRt-bD-9BJ"/>
@@ -83,7 +73,6 @@
                     <constraint firstItem="Km1-RB-qRF" firstAttribute="top" secondItem="6fL-RO-3wz" secondAttribute="bottom" constant="5" id="iB7-V3-FDC"/>
                     <constraint firstItem="6fL-RO-3wz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="ruk-of-1gO"/>
                     <constraint firstItem="ucd-Qh-xGx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="svu-QZ-kT3"/>
-                    <constraint firstAttribute="bottom" secondItem="Muc-oM-qjj" secondAttribute="bottom" id="tAy-Fb-RVf"/>
                     <constraint firstItem="ucd-Qh-xGx" firstAttribute="top" secondItem="Km1-RB-qRF" secondAttribute="bottom" constant="5" id="xBa-I9-63O"/>
                     <constraint firstItem="Km1-RB-qRF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="yc3-e5-CkW"/>
                     <constraint firstItem="6fL-RO-3wz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="ykF-I3-lp9"/>
@@ -92,7 +81,6 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="circleProgressView" destination="Km1-RB-qRF" id="vNd-Xt-Bjf"/>
-                <outlet property="errorLabel" destination="Muc-oM-qjj" id="btk-91-gUL"/>
                 <outlet property="favoriteButton" destination="2O5-1m-2MO" id="O6a-BC-uEf"/>
                 <outlet property="indicatorView" destination="jZ6-aB-Aat" id="OWL-je-KwF"/>
                 <outlet property="posterImageView" destination="9zV-eX-7ME" id="buI-u6-TVP"/>

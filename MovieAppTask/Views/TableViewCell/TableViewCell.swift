@@ -14,7 +14,6 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var circleProgressView: CircularProgressView!
-    @IBOutlet weak var errorLabel: UILabel!
     
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
@@ -34,22 +33,14 @@ class TableViewCell: UITableViewCell {
             favoriteButton.setImage(UIImage(named: "heart.png"), for: .normal)
             coreDataService.deleteById(id: sender.tag)
             movieService.markFavourite(mediaId: sender.tag, favourite: false) { success in
-                if !success {
-                    self.errorLabel.text = "Error"
-                } else {
-                    self.errorLabel.text = ""
-                }
+                print("\(success)")
             }
             
         } else {
             favoriteButton.setImage(UIImage(named: "filled_heart.png"), for: .normal)
             coreDataService.save(id: sender.tag)
             movieService.markFavourite(mediaId: sender.tag, favourite: true) { success in
-                if !success {
-                    self.errorLabel.text = "Error"
-                } else {
-                    self.errorLabel.text = ""
-                }
+                print("\(success)")
             }
         }
     }
