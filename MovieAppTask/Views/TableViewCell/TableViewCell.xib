@@ -17,9 +17,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6fL-RO-3wz">
-                        <rect key="frame" x="5" y="5" width="60" height="21"/>
+                        <rect key="frame" x="5" y="5" width="150" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="60" id="eJa-4F-8E5"/>
+                            <constraint firstAttribute="width" constant="150" id="6EE-6g-9jM"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>

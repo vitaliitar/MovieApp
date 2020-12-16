@@ -28,22 +28,6 @@ class SectionsController: UIViewController, AlertDisplayer {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        movieService.getTopRatedMovies { (result) in
-            switch result {
-            case .success(let response):
-                self.topRatedMovies = response.results
-                self.collectionTopRatedView.reloadData()
-                
-            case .failure(let error):
-                
-                let title = "Error"
-                
-                let action = UIAlertAction(title: "OK", style: .default)
-                
-                self.displayAlert(with: title, message: error.localizedDescription, actions: [action])
-            }
-        }
-        
         collectionTopRatedView.dataSource = self
         collectionTopRatedView.delegate = self
         
@@ -61,15 +45,31 @@ class SectionsController: UIViewController, AlertDisplayer {
         tablePopularView.dataSource = self
         tablePopularView.prefetchDataSource = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        movieService.getTopRatedMovies { (result) in
+            switch result {
+            case .success(let response):
+                self.topRatedMovies = response.results
+                self.collectionTopRatedView.reloadData()
+                
+            case .failure(let error):
+                
+                let title = "Error"
+                
+                let action = UIAlertAction(title: "OK", style: .default)
+                
+                self.displayAlert(with: title, message: error.localizedDescription, actions: [action])
+            }
+        }
+        
         viewModel = MoviesViewModel(delegate: self)
         
         viewModel.fetchMovies()
-        
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-          return 150
-      }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is DetailsViewController {
@@ -82,7 +82,7 @@ class SectionsController: UIViewController, AlertDisplayer {
 extension SectionsController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         movieId = topRatedMovies[indexPath.row].id
-
+        
         performSegue(withIdentifier: "goToDetailsView", sender: nil)
     }
 }
@@ -114,15 +114,15 @@ extension SectionsController: UICollectionViewDelegateFlowLayout {
         guard let cell: CollectionViewCell = Bundle.main.loadNibNamed(CollectionViewCell.nibName,
                                                                       owner: self,
                                                                       options: nil)?.first as? CollectionViewCell else {
-            return CGSize.zero
+                                                                        return CGSize.zero
         }
-
+        
         cell.configure(with: topRatedMovies[indexPath.row])
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
-        let size: CGSize = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
+        //                let size: CGSize = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         #warning("Some images looks bad, the reason is with wrong logic for calculation")
-
+        
         return CGSize(width: 100, height: 130)
     }
 }
@@ -130,8 +130,7 @@ extension SectionsController: UICollectionViewDelegateFlowLayout {
 extension SectionsController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        #warning("This value should not be hardcoded")
-
+        
         return viewModel.totalCount
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -157,6 +156,11 @@ extension SectionsController: UITableViewDelegate {
         performSegue(withIdentifier: "goToDetailsView", sender: nil)
         
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+    
 }
 
 extension SectionsController: UITableViewDataSourcePrefetching {

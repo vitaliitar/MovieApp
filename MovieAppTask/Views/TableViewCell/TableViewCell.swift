@@ -20,7 +20,7 @@ class TableViewCell: UITableViewCell {
     
     private let coreDataService = CoreDataStore.shared
     private let movieService = MovieStore.shared
-    
+        
     override func prepareForReuse() {
         super.prepareForReuse()
         #warning("clear values before")

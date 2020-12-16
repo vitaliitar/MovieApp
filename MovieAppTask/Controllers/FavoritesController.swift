@@ -31,15 +31,15 @@ class FavoritesController: UIViewController, AlertDisplayer {
         //        movieService.markFavourite(mediaId: 551, favourite: true) { success in
         //            print(success)
         //        }
-//        coreDataService.deleteFromCoreData()
-//        coreDataService.save(id: 550)
-//        //        self.retrieve()
-//        coreDataService.save(id: 3)
-//        //        self.retrieve()
-////        coreDataService.deleteById(id: 1)
-//        coreDataService.retrieve()
+        //        coreDataService.deleteFromCoreData()
+        //        coreDataService.save(id: 550)
+        //        //        self.retrieve()
+        //        coreDataService.save(id: 3)
+        //        //        self.retrieve()
+        ////        coreDataService.deleteById(id: 1)
+        //        coreDataService.retrieve()
         
-//        print(coreDataService.checkIfContains(id: 1))
+        //        print(coreDataService.checkIfContains(id: 1))
         
         activityIndicatorView.color = UIColor.green
         activityIndicatorView.startAnimating()
@@ -53,13 +53,13 @@ class FavoritesController: UIViewController, AlertDisplayer {
         tableFavoritesView.dataSource = self
         tableFavoritesView.prefetchDataSource = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         viewModel = FavoritesViewModel(delegate: self)
         
         viewModel.fetchMovies()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -101,6 +101,11 @@ extension FavoritesController: UITableViewDelegate {
         performSegue(withIdentifier: "goDetails", sender: nil)
         
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+    
 }
 
 extension FavoritesController: UITableViewDataSourcePrefetching {

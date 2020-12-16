@@ -32,11 +32,11 @@ class CoreDataStore: CoreDataService {
             try managedContext.save()
         } catch {
             //            print("Failed saving")
-//            let title = "Error"
-//
-//            let action = UIAlertAction(title: "OK", style: .default)
-//
-//            displayAlert(with: title, message: "Failed saving", actions: [action])
+            //            let title = "Error"
+            //
+            //            let action = UIAlertAction(title: "OK", style: .default)
+            //
+            //            displayAlert(with: title, message: "Failed saving", actions: [action])
         }
     }
     
@@ -76,23 +76,23 @@ class CoreDataStore: CoreDataService {
             do {
                 try managedContext.save()
             } catch let error as NSError {
-//
-//                let title = "Error"
-//
-//                let action = UIAlertAction(title: "OK", style: .default)
-//
-//                displayAlert(with: title, message: "Could not save", actions: [action])
+                //
+                //                let title = "Error"
+                //
+                //                let action = UIAlertAction(title: "OK", style: .default)
+                //
+                //                displayAlert(with: title, message: "Could not save", actions: [action])
                 
                 print("Could not save, \(error), \(error.userInfo)")
             }
             
         } catch _ as NSError {
             
-//            let title = "Error"
-//            
-//            let action = UIAlertAction(title: "OK", style: .default)
-//            
-//            displayAlert(with: title, message: "Could not save", actions: [action])
+            //            let title = "Error"
+            //
+            //            let action = UIAlertAction(title: "OK", style: .default)
+            //
+            //            displayAlert(with: title, message: "Could not save", actions: [action])
             
         }
     }
@@ -121,20 +121,20 @@ class CoreDataStore: CoreDataService {
                 try managedContext.save()
             } catch _ as NSError {
                 
-//                let title = "Error"
-//
-//                let action = UIAlertAction(title: "OK", style: .default)
-//
-//                displayAlert(with: title, message: "Could not save", actions: [action])
+                //                let title = "Error"
+                //
+                //                let action = UIAlertAction(title: "OK", style: .default)
+                //
+                //                displayAlert(with: title, message: "Could not save", actions: [action])
             }
             
         } catch _ as NSError {
             
-//            let title = "Error"
-//
-//            let action = UIAlertAction(title: "OK", style: .default)
-//
-//            displayAlert(with: title, message: "Failed saving", actions: [action])
+            //            let title = "Error"
+            //
+            //            let action = UIAlertAction(title: "OK", style: .default)
+            //
+            //            displayAlert(with: title, message: "Failed saving", actions: [action])
         }
     }
     
@@ -160,11 +160,11 @@ class CoreDataStore: CoreDataService {
             
         } catch _ as NSError {
             
-//            let title = "Error"
-//
-//            let action = UIAlertAction(title: "OK", style: .default)
-//
-//            displayAlert(with: title, message: "Failed to get data", actions: [action])
+            //            let title = "Error"
+            //
+            //            let action = UIAlertAction(title: "OK", style: .default)
+            //
+            //            displayAlert(with: title, message: "Failed to get data", actions: [action])
         }
         return false
     }

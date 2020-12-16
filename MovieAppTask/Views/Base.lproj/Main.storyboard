@@ -264,6 +264,16 @@
                                     <action selector="goBack:" destination="y8W-Rc-7mU" eventType="touchUpInside" id="rzm-yG-G1o"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvR-PO-2kM">
+                                <rect key="frame" x="187" y="486" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="2Nn-1v-hhG"/>
+                                    <constraint firstAttribute="width" constant="40" id="hed-20-8fu"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="changeFavorite:" destination="y8W-Rc-7mU" eventType="touchUpInside" id="qSY-Y2-87r"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -273,6 +283,7 @@
                             <constraint firstItem="Y7l-99-qiU" firstAttribute="top" secondItem="E7Z-rl-cmh" secondAttribute="bottom" constant="38.666666666666742" id="Mj7-SZ-Vg7"/>
                             <constraint firstItem="ywC-XL-Ye5" firstAttribute="top" secondItem="95U-1V-3uw" secondAttribute="top" constant="281" id="RUa-NS-fsl"/>
                             <constraint firstItem="VYz-ZM-fhv" firstAttribute="centerX" secondItem="95U-1V-3uw" secondAttribute="centerX" id="Uy5-aQ-Ih3"/>
+                            <constraint firstItem="QvR-PO-2kM" firstAttribute="top" secondItem="6fT-MF-SAv" secondAttribute="bottom" constant="10" id="WQI-i7-Y7l"/>
                             <constraint firstItem="6fT-MF-SAv" firstAttribute="leading" secondItem="E7Z-rl-cmh" secondAttribute="trailing" constant="50" id="Wuu-YA-3V2"/>
                             <constraint firstItem="fQ4-NJ-AlJ" firstAttribute="trailing" secondItem="6fT-MF-SAv" secondAttribute="trailing" constant="50" id="d6o-TI-iPd"/>
                             <constraint firstItem="ywC-XL-Ye5" firstAttribute="top" secondItem="flY-2V-3bS" secondAttribute="bottom" constant="52" id="duR-wf-rrC"/>
@@ -282,6 +293,7 @@
                             <constraint firstItem="Y7l-99-qiU" firstAttribute="centerX" secondItem="95U-1V-3uw" secondAttribute="centerX" id="q7y-n6-Q6f"/>
                             <constraint firstItem="ywC-XL-Ye5" firstAttribute="centerX" secondItem="95U-1V-3uw" secondAttribute="centerX" id="vJs-oA-00c"/>
                             <constraint firstItem="ywC-XL-Ye5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fQ4-NJ-AlJ" secondAttribute="leading" id="xP4-NZ-4RJ"/>
+                            <constraint firstItem="QvR-PO-2kM" firstAttribute="centerX" secondItem="95U-1V-3uw" secondAttribute="centerX" id="yEx-Ig-mQV"/>
                             <constraint firstItem="fQ4-NJ-AlJ" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ywC-XL-Ye5" secondAttribute="trailing" id="zcN-oF-nu9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fQ4-NJ-AlJ"/>
@@ -289,6 +301,7 @@
                     <navigationItem key="navigationItem" id="ORz-NC-Oxk"/>
                     <connections>
                         <outlet property="circleProgessView" destination="E7Z-rl-cmh" id="yIZ-Hb-QYE"/>
+                        <outlet property="favoriteButton" destination="QvR-PO-2kM" id="09W-JY-bZW"/>
                         <outlet property="overviewLabel" destination="ywC-XL-Ye5" id="WCi-dx-X52"/>
                         <outlet property="posterImageView" destination="flY-2V-3bS" id="WzZ-7c-pvz"/>
                         <outlet property="releaseDateLabel" destination="SOf-Ph-ILx" id="uxO-sV-l8I"/>

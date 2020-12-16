@@ -8,7 +8,6 @@
 
 import UIKit
 
-#warning("Naming should be corrected")
 class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageContainerView: UIImageView!
@@ -18,8 +17,8 @@ class CollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    static var reuseIdentifier = "CollectionViewCellReuseIdentifier"
-    static let nibName = "CollectionViewCell"
+    static var reuseIdentifier = "collectionViewCellReuseIdentifier"
+    static let nibName = "collectionViewCell"
     
     static func nib() -> UINib {
         return UINib(nibName: nibName, bundle: nil)

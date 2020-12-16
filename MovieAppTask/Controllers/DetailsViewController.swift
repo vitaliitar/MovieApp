@@ -18,13 +18,18 @@ class DetailsViewController: UIViewController, AlertDisplayer {
     @IBOutlet weak var runtimeLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     
+    @IBOutlet weak var favoriteButton: UIButton!
     private var movie: Movie?
     private let movieService = MovieStore.shared
+    private let coreDataService = CoreDataStore.shared
     var movieId: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         movieService.getMovie(id: movieId!) { (result) in
             switch result {
             case .success(let response):
@@ -35,10 +40,43 @@ class DetailsViewController: UIViewController, AlertDisplayer {
                 let action = UIAlertAction(title: "OK", style: .default)
                 
                 self.displayAlert(with: title, message: error.localizedDescription, actions: [action])
-                
+            }
+        }
+        
+    }
+    
+    @IBAction func changeFavorite(_ sender: UIButton) {
+        print(sender.tag)
+        let containsInFavorite = coreDataService.checkIfContains(id: sender.tag)
+        
+        if containsInFavorite {
+            favoriteButton.setImage(UIImage(named: "heart.png"), for: .normal)
+            coreDataService.deleteById(id: sender.tag)
+            movieService.markFavourite(mediaId: sender.tag, favourite: false) { success in
+                if !success {
+                    let title = "Error"
+                    
+                    let action = UIAlertAction(title: "OK", style: .default)
+                    
+                    self.displayAlert(with: title, message: "Network error", actions: [action])
+                }
+            }
+            
+        } else {
+            favoriteButton.setImage(UIImage(named: "filled_heart.png"), for: .normal)
+            coreDataService.save(id: sender.tag)
+            movieService.markFavourite(mediaId: sender.tag, favourite: true) { success in
+                if !success {
+                    let title = "Error"
+                    
+                    let action = UIAlertAction(title: "OK", style: .default)
+                    
+                    self.displayAlert(with: title, message: "Network error", actions: [action])
+                }
             }
         }
     }
+    
     @IBAction func goBack(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
@@ -56,6 +94,16 @@ class DetailsViewController: UIViewController, AlertDisplayer {
         self.voteCountLabel.text = String(model.voteCount)
         self.runtimeLabel.text = model.durationText
         self.releaseDateLabel.text = model.releaseDate
+        
+        self.favoriteButton.tag = model.id
+        
+        let containsInFavorite = coreDataService.checkIfContains(id: model.id)
+        
+        if containsInFavorite {
+            favoriteButton.setImage(UIImage(named: "filled_heart.png"), for: .normal)
+        } else {
+            favoriteButton.setImage(UIImage(named: "heart.png"), for: .normal)
+        }
         
         self.circleProgessView.progress = CGFloat(model.rating) / 100
         

@@ -39,16 +39,14 @@ class MovieStore: MovieService {
         self.loadURLAndDecode(url: url, params: [
             "session_id": "\(sessionId)",
             "page": "\(page)"
-            ], completion: completion)
-
+        ], completion: completion)
+        
     }
     
     func markFavourite(mediaId: Int, favourite: Bool, completion: @escaping (Bool) -> Void) {
         let json: [String: Any] = ["media_type": "movie", "media_id": mediaId, "favorite": favourite]
         
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        
-//        jsonData?.printJSON()
         
         guard let url = URL(string: "\(baseAPIURL)/account/9872680/favorite?api_key=\(apiKey)&session_id=\(sessionId)") else {
             return
@@ -65,7 +63,7 @@ class MovieStore: MovieService {
                 completion(false)
                 return
             }
-
+            
             let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
             if let responseJSON = responseJSON as? [String: Any] {
                 if responseJSON["success"] as? Int == 1 {
