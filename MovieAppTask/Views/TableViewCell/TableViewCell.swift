@@ -21,9 +21,11 @@ class TableViewCell: UITableViewCell {
     private let coreDataService = CoreDataStore.shared
     private let movieService = MovieStore.shared
     
+    private let coreDataManager = CoreDataManager.sharedManager
+    
     override func prepareForReuse() {
+        super.prepareForReuse()
         configure(with: .none)
-        super.prepareForReuse()        
     }
     
     @IBAction func changeFavorite(_ sender: UIButton) {
@@ -43,6 +45,13 @@ class TableViewCell: UITableViewCell {
                 print("\(success)")
             }
         }
+//        self.save(title: "Serendipity", id: 5)
+        print(coreDataManager.fetchAllMovies())
+        
+    }
+    
+    func save(title: String, id: Int) {
+        let _ = coreDataManager.insertMovie(id: id, title: title)
     }
     
     override func awakeFromNib() {

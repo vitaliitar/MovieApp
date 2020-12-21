@@ -53,6 +53,7 @@ class FavoritesController: UIViewController, AlertDisplayer {
         }
     }
     
+    
 }
 
 extension FavoritesController: UITableViewDataSource {
