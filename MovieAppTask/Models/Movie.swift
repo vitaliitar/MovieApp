@@ -58,5 +58,5 @@ struct Movie: Decodable, Identifiable, Hashable {
             return "n/a"
         }
         return Movie.durationFormatter.string(from: TimeInterval(runtime) * 60) ?? "n/a"
-    }
+    }    
 }

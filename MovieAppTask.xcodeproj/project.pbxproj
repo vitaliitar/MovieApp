@@ -25,7 +25,6 @@
 		F64F25AB257EC21B00354524 /* SectionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F25AA257EC21B00354524 /* SectionsController.swift */; };
 		F651E7532589692A00D7BF45 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651E7522589692A00D7BF45 /* CoreDataService.swift */; };
 		F651E7552589695E00D7BF45 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F651E7542589695E00D7BF45 /* CoreDataStore.swift */; };
-		F656F1DB25928B3D00703AE7 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F656F1DA25928B3D00703AE7 /* Converter.swift */; };
 		F65A2F5A2580F8480058D006 /* AlertDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65A2F592580F8480058D006 /* AlertDisplayer.swift */; };
 		F67CFE182587CEEA000A4C75 /* FavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67CFE172587CEEA000A4C75 /* FavoritesController.swift */; };
 		F67CFE1A2587F2BC000A4C75 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67CFE192587F2BC000A4C75 /* Data.swift */; };
@@ -62,7 +61,6 @@
 		F64F25AA257EC21B00354524 /* SectionsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsController.swift; sourceTree = "<group>"; };
 		F651E7522589692A00D7BF45 /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		F651E7542589695E00D7BF45 /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
-		F656F1DA25928B3D00703AE7 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		F65A2F592580F8480058D006 /* AlertDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplayer.swift; sourceTree = "<group>"; };
 		F67CFE172587CEEA000A4C75 /* FavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesController.swift; sourceTree = "<group>"; };
 		F67CFE192587F2BC000A4C75 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
@@ -208,7 +206,6 @@
 				F651E7522589692A00D7BF45 /* CoreDataService.swift */,
 				F651E7542589695E00D7BF45 /* CoreDataStore.swift */,
 				F68D04282590F43C008A4469 /* CoreDataManager.swift */,
-				F656F1DA25928B3D00703AE7 /* Converter.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -372,7 +369,6 @@
 				F64ECBA6257576BF00054483 /* CircularProgressView.swift in Sources */,
 				F68D04292590F43C008A4469 /* CoreDataManager.swift in Sources */,
 				F67CFE182587CEEA000A4C75 /* FavoritesController.swift in Sources */,
-				F656F1DB25928B3D00703AE7 /* Converter.swift in Sources */,
 				F651E7532589692A00D7BF45 /* CoreDataService.swift in Sources */,
 				F64EC05D25801E3500BDE17E /* CollectionViewCell.swift in Sources */,
 				F68D042D2590FDA7008A4469 /* MovieCoreData+CoreDataProperties.swift in Sources */,

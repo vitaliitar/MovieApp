@@ -9,8 +9,6 @@
 import Foundation
 import CoreData
 
-// chech it if it used
-
 extension MovieCoreData {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<MovieCoreData> {
         return NSFetchRequest<MovieCoreData>(entityName: "MovieCoreData")
@@ -24,5 +22,6 @@ extension MovieCoreData {
     @NSManaged public var video: Bool
     @NSManaged public var voteAverage: Double
     @NSManaged public var voteCount: Int
+    @NSManaged public var releaseDate: String
     
 }

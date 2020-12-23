@@ -24,13 +24,11 @@ class CoreDataManager {
             do {
                 try context.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
-        
     }
     
     func insertMovie(movieData: Movie) -> MovieCoreData? {
@@ -48,11 +46,10 @@ class CoreDataManager {
         movie.setValue(movieData.voteCount, forKey: "voteCount")
         movie.setValue(movieData.releaseDate, forKey: "releaseDate")
         
-        
         do {
             try managedContext.save()
             print("Cool everything is saved")
-            return movie as? MovieCoreData
+            return movie
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
             return nil
@@ -68,10 +65,7 @@ class CoreDataManager {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MovieCoreData")
         
-        
-        
         do {
-//            managedContext.delete(movie)
             let movies = try managedContext.fetch(fetchRequest)
             
             for data in movies as! [NSManagedObject] {
@@ -140,7 +134,7 @@ class CoreDataManager {
         let fetchRequest = NSFetchRequest<MovieCoreData>(entityName: "MovieCoreData")
         
         let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
-          fetchRequest.sortDescriptors = [sortDescriptor]
+        fetchRequest.sortDescriptors = [sortDescriptor]
         
         let fetchedResultsController = NSFetchedResultsController<MovieCoreData>(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
         
@@ -148,13 +142,4 @@ class CoreDataManager {
         
         return fetchedResultsController
     }()
-    
-    //    lazy var fetchedResultsController: NSFetchedResultsController<MovieCoreData> = {
-    //        let fetchRequest: NSFetchRequest<MovieCoreData> = MovieCoreData.fetchRequest()
-    //
-    //        let fetchedResultsController = NSFetchedResultsController(
-    //            fetchRequest: fetchRequest,
-    //            managedContex
-    //        )
-    //    }()
 }

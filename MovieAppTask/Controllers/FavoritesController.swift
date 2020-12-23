@@ -11,8 +11,19 @@ import CoreData
 
 class FavoritesController: UIViewController, TableViewCellDelegate, AlertDisplayer {
     func favoriteTapped(at index: IndexPath) {
-        print("at indexPath \(index)")
-//        print("Cell at: \()")
+        
+        let movie = coreDataManager.fetchedResultsController.object(at: index)
+        
+        let containsInFavorite = coreDataService.checkIfContains(id: movie.id)
+        
+        if containsInFavorite {
+            
+            coreDataService.deleteById(id: movie.id)
+            coreDataManager.deleteById(movieId: movie.id)
+            
+        }
+        tableFavoritesView.reloadData()
+        
     }
     
     private let movieService = MovieStore.shared
@@ -21,50 +32,44 @@ class FavoritesController: UIViewController, TableViewCellDelegate, AlertDisplay
     private var movieId: Int?
     
     @IBOutlet weak var tableFavoritesView: UITableView!
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     private var shouldShowLoadingCell = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        activityIndicatorView.color = UIColor.green
-        activityIndicatorView.startAnimating()
-        
         tableFavoritesView.separatorColor = UIColor.green
         
         tableFavoritesView.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.identifier)
-        //
+        
         tableFavoritesView.delegate = self
         tableFavoritesView.dataSource = self
-        //        tableFavoritesView.
-        //        tableFavoritesView.
-        //        tableFavoritesView.prefetchDataSource = self
-        //        coreDataManager.insertMovie(id: 3, title: "Diana")
-    }
-    func fetchAllPersons(){
         
-        /*This class is delegate of fetchedResultsController protocol methods*/
+    }
+    func fetchAllMovies() {
+        
         coreDataManager.fetchedResultsController.delegate = self
-        do{
+        do {
             
-            print("2. NSFetchResultController will start fetching :)")
-            /*initiate performFetch() call on fetchedResultsController*/
             try coreDataManager.fetchedResultsController.performFetch()
-            print("3. NSFetchResultController did end fetching :)")
             
-        }catch{
+        } catch {
             print(error)
         }
         
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchAllPersons()
+        fetchAllMovies()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is DetailsViewController {
+            let vc = segue.destination as? DetailsViewController
+            vc?.movieId = movieId
+        }
+    }
     
 }
 
@@ -84,11 +89,10 @@ extension FavoritesController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
         
-        //        TODO add movie
         let movie = coreDataManager.fetchedResultsController.object(at: indexPath)
         cell.delegate = self
         cell.indexPath = indexPath
-        print("cellforRowAt: \(cell.indexPath)")
+        
         cell.configureFromCoreData(with: movie)
         
         return cell
@@ -102,11 +106,9 @@ extension FavoritesController: UITableViewDelegate {
         
         let movie = coreDataManager.fetchedResultsController.object(at: indexPath)
         
-        print(movie.value(forKey: "title"))
+        movieId = movie.id
         
-        
-        // segue
-        //        performSegue(withIdentifier: "goDetails", sender: nil)
+        performSegue(withIdentifier: "goDetails", sender: nil)
         
     }
     
@@ -125,20 +127,16 @@ extension FavoritesController: NSFetchedResultsControllerDelegate {
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
-        print("B. NSFetchResultController didChange NSFetchedResultsChangeType \(type.rawValue):)")
         
-        
-        switch (type) {
+        switch type {
         case .insert:
             if let indexPath = newIndexPath {
                 tableFavoritesView.insertRows(at: [indexPath], with: .fade)
             }
-            break
         case .delete:
             if let indexPath = indexPath {
                 tableFavoritesView.deleteRows(at: [indexPath], with: .fade)
             }
-            break
         case .move:
             if let indexPath = indexPath {
                 tableFavoritesView.deleteRows(at: [indexPath], with: .fade)
@@ -147,9 +145,6 @@ extension FavoritesController: NSFetchedResultsControllerDelegate {
             if let newIndexPath = newIndexPath {
                 tableFavoritesView.insertRows(at: [newIndexPath], with: .fade)
             }
-            break
-            
-            
         case .update:
             break
         @unknown default:
@@ -158,57 +153,6 @@ extension FavoritesController: NSFetchedResultsControllerDelegate {
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        /*finally balance beginUpdates with endupdates*/
         tableFavoritesView.endUpdates()
     }
 }
-
-//extension FavoritesController: UITableViewDataSourcePrefetching {
-//    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-//        if indexPaths.contains(where: isLoadingCell) {
-//            viewModel.fetchMovies()
-//        }
-//    }
-//}
-//
-//extension FavoritesController: FavoritesViewModelDelegate {
-//
-//    func onFetchCompleted(with newIndexPathsToReload: [IndexPath]?) {
-//        guard let newIndexPathsToReload = newIndexPathsToReload else {
-//            activityIndicatorView.stopAnimating()
-//            activityIndicatorView.isHidden = true
-//
-//            tableFavoritesView.isHidden = false
-//            tableFavoritesView.reloadData()
-//
-//            return
-//        }
-//
-//        let indexPathsToReload = visibleIndexPathsToReload(intersecting: newIndexPathsToReload)
-//        tableFavoritesView.reloadRows(at: indexPathsToReload, with: .automatic)
-//
-//    }
-//
-//    func onFetchFailed(with reason: String) {
-//        activityIndicatorView.stopAnimating()
-//
-//        let title = "Warning"
-//
-//        let action = UIAlertAction(title: "OK", style: .default)
-//
-//        displayAlert(with: title, message: reason, actions: [action])
-//
-//    }
-//}
-//
-//private extension FavoritesController {
-//    func isLoadingCell(for indexPath: IndexPath) -> Bool {
-//        return indexPath.row >= viewModel.currentCount
-//    }
-//
-//    func visibleIndexPathsToReload(intersecting indexPaths: [IndexPath]) -> [IndexPath] {
-//        let indexPathsForVisibleRows = tableFavoritesView.indexPathsForVisibleRows ?? []
-//        let indexPathsIntersection = Set(indexPathsForVisibleRows).intersection(indexPaths)
-//        return Array(indexPathsIntersection)
-//    }
-//}

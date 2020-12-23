@@ -19,10 +19,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A7y-go-ats">
                                 <rect key="frame" x="0.0" y="54" width="414" height="709"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" id="12e-zN-8RM">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </activityIndicatorView>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -36,7 +32,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" id="e5t-YE-aqO"/>
                     <connections>
-                        <outlet property="activityIndicatorView" destination="12e-zN-8RM" id="FJc-Kg-sT7"/>
                         <outlet property="tableFavoritesView" destination="A7y-go-ats" id="wcl-Jf-Hw5"/>
                         <segue destination="y8W-Rc-7mU" kind="show" identifier="goDetails" id="944-LU-h6F"/>
                     </connections>

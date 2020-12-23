@@ -36,38 +36,12 @@ class TableViewCell: UITableViewCell {
     }
     
     @IBAction func changeFavorite(_ sender: UIButton) {
-        // check if contains
         
-//       favoriteButton.setImage(UIImage(named: "filled_heart.png"), for: .normal)
-        
-//        let containsInFavorite = coreDataService.checkIfContains(id: sender.tag)
-//
-//        if containsInFavorite {
-//            favoriteButton.setImage(UIImage(named: "heart.png"), for: .normal)
-//            coreDataService.deleteById(id: sender.tag)
-//            movieService.markFavourite(mediaId: sender.tag, favourite: false) { success in
-//                print("\(success)")
-//            }
-//
-//        } else {
-//            favoriteButton.setImage(UIImage(named: "filled_heart.png"), for: .normal)
-//            coreDataService.save(id: sender.tag)
-//            movieService.markFavourite(mediaId: sender.tag, favourite: true) { success in
-//                print("\(success)")
-//            }
-//        }
         print("index: \(indexPath.row)")
         self.delegate.favoriteTapped(at: indexPath)
         
-//        self.save(title: "Serendipity", id: 5)
-//        print(coreDataManager.fetchAllMovies())
-        
     }
-    
-//    func save(title: String, id: Int) {
-//        let _ = coreDataManager.insertMovie(id: id, title: title)
-//    }
-    
+        
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -95,9 +69,7 @@ class TableViewCell: UITableViewCell {
             if let data = try? Data(contentsOf: url) {
                 self.posterImageView.image = UIImage(data: data)
             }
-//            rewrite
-            self.favoriteButton.tag = movie.id
-            print("YEAHHHS")
+
             let containsInFavorite = coreDataService.checkIfContains(id: movie.id)
             
             if containsInFavorite {
@@ -115,9 +87,41 @@ class TableViewCell: UITableViewCell {
     }
     
     func configureFromCoreData(with movie: MovieCoreData?) {
-        print(movie?.title)
-        self.titleLabel.text = movie?.title
-        self.circleProgressView.progress = 0.8
+        
+        let yearFormatter: DateFormatter = {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy"
+            return formatter
+        }()
+        
+        var yearText: String {
+            guard let releaseDate = movie?.releaseDate, let date = Utils.dateFormatter.date(from: releaseDate) else {
+                return "n/a"
+            }
+            return yearFormatter.string(from: date)
+        }
+        
+        if let movie = movie {
+            
+            self.titleLabel.text = movie.title
+            
+            self.yearLabel.text = yearText
+            
+            self.circleProgressView.progress = CGFloat(Int(movie.voteAverage * 10)) / 100.0
+            
+            let url = URL(string: "https://image.tmdb.org/t/p/w500\(movie.posterPath)")!
+            
+            if let data = try? Data(contentsOf: url) {
+                self.posterImageView.image = UIImage(data: data)
+            }
+            
+            favoriteButton.setImage(UIImage(named: "filled_heart.png"), for: .normal)
+            
+            indicatorView.stopAnimating()
+        } else {
+            indicatorView.startAnimating()
+        }
+        
     }
     
 }

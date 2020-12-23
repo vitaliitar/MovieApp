@@ -14,32 +14,23 @@ class SectionsController: UIViewController, TableViewCellDelegate, AlertDisplaye
     private let coreDataService = CoreDataStore.shared
     
     func favoriteTapped(at index: IndexPath) {
-        print("OK in sections: \(index)")
-        //        print(topRatedMovies[index.row])
         
-        // TODO add logic for favs
-        
-        var movie = viewModel.movie(at: index.row)
+        let movie = viewModel.movie(at: index.row)
         
         let containsInFavorite = coreDataService.checkIfContains(id: movie.id)
         
-        
         if containsInFavorite {
-            // we got it
-            
             coreDataService.deleteById(id: movie.id)
-            coreDataManager.deleteById(movieId: movie.id)	
-        }
-        else {
-            coreDataManager.insertMovie(movieData: movie)
+            coreDataManager.deleteById(movieId: movie.id)
+            
+        } else {
+            let _ = coreDataManager.insertMovie(movieData: movie)
             
             coreDataService.save(id: movie.id)
+            
         }
+        tablePopularView.reloadRows(at: [index], with: .automatic)
         
-        
-        tablePopularView.reloadRows(at: [index], with: UITableView.RowAnimation.top)
-        
-        print("OK")
     }
     
     private var topRatedMovies = [Movie]()
@@ -82,7 +73,7 @@ class SectionsController: UIViewController, TableViewCellDelegate, AlertDisplaye
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        movieService.getTopRatedMovies { (result) in
+        DispatchQueue.main.async {self.movieService.getTopRatedMovies { (result) in
             switch result {
             case .success(let response):
                 self.topRatedMovies = response.results
@@ -95,6 +86,7 @@ class SectionsController: UIViewController, TableViewCellDelegate, AlertDisplaye
                 let action = UIAlertAction(title: "OK", style: .default)
                 
                 self.displayAlert(with: title, message: error.localizedDescription, actions: [action])
+            }
             }
         }
         
