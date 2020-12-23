@@ -14,21 +14,6 @@ class CoreDataManager {
     static let sharedManager = CoreDataManager()
     private init() {}
     
-    //     lazy var persistentContainer: NSPersistentContainer = {
-    //
-    //      let container = NSPersistentContainer(name: "MovieAppTask")
-    //
-    //
-    //      container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-    //
-    //        if let error = error as NSError? {
-    //          fatalError("Unresolved error \(error), \(error.userInfo)")
-    //        }
-    //      })
-    //      return container
-    //    }()
-    
-    
     func saveContext() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -48,15 +33,21 @@ class CoreDataManager {
         
     }
     
-    func insertMovie(id: Int, title: String) -> MovieCoreData? {
+    func insertMovie(movieData: Movie) -> MovieCoreData? {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let managedContext = appDelegate.persistentContainer.viewContext
         
         let movie = MovieCoreData(context: managedContext)
         
-        movie.setValue(title, forKey: "title")
-        movie.setValue(id, forKey: "id")
+        movie.setValue(movieData.id, forKey: "id")
+        movie.setValue(movieData.title, forKey: "title")
+        movie.setValue(movieData.posterPath, forKey: "posterPath")
+        movie.setValue(movieData.overview, forKey: "overview")
+        movie.setValue(movieData.voteAverage, forKey: "voteAverage")
+        movie.setValue(movieData.voteCount, forKey: "voteCount")
+        movie.setValue(movieData.releaseDate, forKey: "releaseDate")
+        
         
         do {
             try managedContext.save()
@@ -68,15 +59,31 @@ class CoreDataManager {
         }
     }
     
-    func delete(movie: MovieCoreData) {
+    func deleteById(movieId: Int) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
         
         let managedContext = appDelegate.persistentContainer.viewContext
         
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MovieCoreData")
+        
+        
+        
         do {
-            managedContext.delete(movie)
+//            managedContext.delete(movie)
+            let movies = try managedContext.fetch(fetchRequest)
+            
+            for data in movies as! [NSManagedObject] {
+                let valueId = data.value(forKey: "id") as! Int
+                
+                if valueId == movieId {
+                    managedContext.delete(data)
+                }
+                
+            }
+            
+            try? managedContext.save()
         } catch {
             print(error)
         }
@@ -131,6 +138,9 @@ class CoreDataManager {
         let managedContext = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<MovieCoreData>(entityName: "MovieCoreData")
+        
+        let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
+          fetchRequest.sortDescriptors = [sortDescriptor]
         
         let fetchedResultsController = NSFetchedResultsController<MovieCoreData>(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
         

@@ -8,7 +8,39 @@
 
 import UIKit
 
-class SectionsController: UIViewController, AlertDisplayer {
+class SectionsController: UIViewController, TableViewCellDelegate, AlertDisplayer {
+    
+    var coreDataManager = CoreDataManager.sharedManager
+    private let coreDataService = CoreDataStore.shared
+    
+    func favoriteTapped(at index: IndexPath) {
+        print("OK in sections: \(index)")
+        //        print(topRatedMovies[index.row])
+        
+        // TODO add logic for favs
+        
+        var movie = viewModel.movie(at: index.row)
+        
+        let containsInFavorite = coreDataService.checkIfContains(id: movie.id)
+        
+        
+        if containsInFavorite {
+            // we got it
+            
+            coreDataService.deleteById(id: movie.id)
+            coreDataManager.deleteById(movieId: movie.id)	
+        }
+        else {
+            coreDataManager.insertMovie(movieData: movie)
+            
+            coreDataService.save(id: movie.id)
+        }
+        
+        
+        tablePopularView.reloadRows(at: [index], with: UITableView.RowAnimation.top)
+        
+        print("OK")
+    }
     
     private var topRatedMovies = [Movie]()
     
@@ -133,6 +165,9 @@ extension SectionsController: UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
+        
+        cell.delegate = self
+        cell.indexPath = indexPath
         
         if isLoadingCell(for: indexPath) {
             cell.configure(with: .none)

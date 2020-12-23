@@ -9,24 +9,20 @@
 import Foundation
 import CoreData
 
+// chech it if it used
+
 extension MovieCoreData {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<MovieCoreData> {
         return NSFetchRequest<MovieCoreData>(entityName: "MovieCoreData")
     }
     
-    @NSManaged public var adult: Bool
-    @NSManaged public var backdrop_path: String?
-    @NSManaged public var genre_ids: [Int]
     @NSManaged public var id: Int
-    @NSManaged public var original_language: String?
-    @NSManaged public var original_title: String?
     @NSManaged public var overview: String
     @NSManaged public var popularite: Double
-    @NSManaged public var poster_path: String
+    @NSManaged public var posterPath: String
     @NSManaged public var title: String
     @NSManaged public var video: Bool
-    @NSManaged public var vote_average: Double
-    @NSManaged public var vote_count: Int
-    
+    @NSManaged public var voteAverage: Double
+    @NSManaged public var voteCount: Int
     
 }

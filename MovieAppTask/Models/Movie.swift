@@ -16,14 +16,14 @@ struct MovieResponse: Decodable {
 
 struct Movie: Decodable, Identifiable, Hashable {
     
-    let id: Int
-    let title: String
-    let posterPath: String?
-    let overview: String
-    let voteAverage: Double
-    let voteCount: Int
-    let runtime: Int?
-    let releaseDate: String?
+    var id: Int
+    var title: String
+    var posterPath: String?
+    var overview: String
+    var voteAverage: Double
+    var voteCount: Int
+    var runtime: Int?
+    var releaseDate: String?
     
     static private let yearFormatter: DateFormatter = {
         let formatter = DateFormatter()
