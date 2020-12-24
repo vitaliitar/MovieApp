@@ -36,7 +36,6 @@ final class MoviesViewModel {
     }
     
     func movie(at index: Int) -> Movie {
-        print("error with: \(index) and popularMoviesCOunt: \(popularMovies.count)")
         
         return popularMovies[index]
     }

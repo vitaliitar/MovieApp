@@ -13,7 +13,7 @@ class FavoritesController: UIViewController, TableViewCellDelegate, AlertDisplay
     func favoriteTapped(at index: IndexPath) {
         
         let movie = coreDataManager.fetchedResultsController.object(at: index)
-                
+        
         let containsInFavorite = coreDataManager.checkIfContains(id: movie.id)
         
         if containsInFavorite {

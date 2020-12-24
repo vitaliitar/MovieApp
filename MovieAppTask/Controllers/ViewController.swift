@@ -15,7 +15,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func favoriteTapped(at index: IndexPath) {
         let movie = movies[index.row]
-                
+        
         let containsInFavorite = coreDataManager.checkIfContains(id: movie.id)
         
         if containsInFavorite {
@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             
         } else {
             coreDataManager.insertMovie(movieData: movie)
-                        
+            
         }
         tableView.reloadRows(at: [index], with: .automatic)
         

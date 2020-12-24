@@ -50,7 +50,7 @@ class DetailsViewController: UIViewController, AlertDisplayer {
         
         if containsInFavorite {
             favoriteButton.setImage(UIImage(named: "heart.png"), for: .normal)
-                        
+            
             coreDataManager.deleteById(movieId: movieId!)
             
         } else {
@@ -78,7 +78,7 @@ class DetailsViewController: UIViewController, AlertDisplayer {
         self.voteCountLabel.text = String(model.voteCount)
         self.runtimeLabel.text = model.durationText
         self.releaseDateLabel.text = model.releaseDate
-                
+        
         let containsInFavorite = coreDataManager.checkIfContains(id: model.id)
         
         if containsInFavorite {

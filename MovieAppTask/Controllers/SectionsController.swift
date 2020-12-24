@@ -22,7 +22,7 @@ class SectionsController: UIViewController, TableViewCellDelegate, AlertDisplaye
             coreDataManager.deleteById(movieId: movie.id)
             
         } else {
-           coreDataManager.insertMovie(movieData: movie)
+            coreDataManager.insertMovie(movieData: movie)
             
         }
         tablePopularView.reloadRows(at: [index], with: .automatic)
