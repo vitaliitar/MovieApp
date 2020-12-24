@@ -1,16 +1,20 @@
 PODS:
+  - ReachabilitySwift (5.0.0)
   - SwiftLint (0.41.0)
 
 DEPENDENCIES:
+  - ReachabilitySwift
   - SwiftLint
 
 SPEC REPOS:
   trunk:
+    - ReachabilitySwift
     - SwiftLint
 
 SPEC CHECKSUMS:
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: db4ca61d418a44fc823010b65a621b6b8ef1dfa8
+PODFILE CHECKSUM: 6f10e16206a4b9d8b2c322fa3e3d250cd11db9fd
 
 COCOAPODS: 1.10.0

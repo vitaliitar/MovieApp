@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, AlertDisplayer {
     var coreDataManager = CoreDataManager.sharedManager
     
+    let networkManager = NetworkManager.sharedInstance
+    
     func favoriteTapped(at index: IndexPath) {
         let movie = movies[index.row]
                 
@@ -20,7 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             coreDataManager.deleteById(movieId: movie.id)
             
         } else {
-            let _ = coreDataManager.insertMovie(movieData: movie)
+            coreDataManager.insertMovie(movieData: movie)
                         
         }
         tableView.reloadRows(at: [index], with: .automatic)
@@ -65,9 +67,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.identifier)
-        tableView.delegate = self
-        tableView.dataSource = self
+        
+        networkManager.reachability.whenUnreachable = { _ in
+            self.showOfflinePage()
+        }
+        
+        networkManager.reachability.whenReachable = { _ in
+            self.tableView.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.identifier)
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+        }
+        
+    }
+    
+    private func showOfflinePage() {
+        DispatchQueue.main.async {
+            self.performSegue(
+                withIdentifier: "NetworkUnavailable",
+                sender: self
+            )
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

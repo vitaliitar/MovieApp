@@ -11,7 +11,6 @@ import UIKit
 class SectionsController: UIViewController, TableViewCellDelegate, AlertDisplayer {
     
     var coreDataManager = CoreDataManager.sharedManager
-//    private let coreDataService = CoreDataStore.shared
     
     func favoriteTapped(at index: IndexPath) {
         
@@ -23,8 +22,8 @@ class SectionsController: UIViewController, TableViewCellDelegate, AlertDisplaye
             coreDataManager.deleteById(movieId: movie.id)
             
         } else {
-            let _ = coreDataManager.insertMovie(movieData: movie)
-                        
+           coreDataManager.insertMovie(movieData: movie)
+            
         }
         tablePopularView.reloadRows(at: [index], with: .automatic)
         
@@ -48,42 +47,56 @@ class SectionsController: UIViewController, TableViewCellDelegate, AlertDisplaye
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionTopRatedView.dataSource = self
-        collectionTopRatedView.delegate = self
+        NetworkManager.isUnreachable { _ in
+            self.showOfflinePage()
+        }
         
-        collectionTopRatedView.register(CollectionViewCell.nib(), forCellWithReuseIdentifier: CollectionViewCell.reuseIdentifier)
-        
-        indicatorView.color = UIColor.green
-        indicatorView.startAnimating()
-        
-        tablePopularView.isHidden = true
-        tablePopularView.separatorColor = UIColor.green
-        
-        tablePopularView.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.identifier)
-        
-        tablePopularView.delegate = self
-        tablePopularView.dataSource = self
-        tablePopularView.prefetchDataSource = self
+        NetworkManager.isReachable { _ in
+            self.collectionTopRatedView.dataSource = self
+            self.collectionTopRatedView.delegate = self
+            
+            self.collectionTopRatedView.register(CollectionViewCell.nib(), forCellWithReuseIdentifier: CollectionViewCell.reuseIdentifier)
+            
+            self.indicatorView.color = UIColor.green
+            self.indicatorView.startAnimating()
+            
+            self.tablePopularView.isHidden = true
+            self.tablePopularView.separatorColor = UIColor.green
+            
+            self.tablePopularView.register(TableViewCell.nib(), forCellReuseIdentifier: TableViewCell.identifier)
+            
+            self.tablePopularView.delegate = self
+            self.tablePopularView.dataSource = self
+            self.tablePopularView.prefetchDataSource = self
+            
+        }
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        DispatchQueue.main.async {self.movieService.getTopRatedMovies { (result) in
-            switch result {
-            case .success(let response):
-                self.topRatedMovies = response.results
-                self.collectionTopRatedView.reloadData()
-                
-            case .failure(let error):
-                
-                let title = "Error"
-                
-                let action = UIAlertAction(title: "OK", style: .default)
-                
-                self.displayAlert(with: title, message: error.localizedDescription, actions: [action])
-            }
+        NetworkManager.isUnreachable { _ in
+            self.showOfflinePage()
+        }
+        
+        NetworkManager.isReachable { _ in
+            
+            DispatchQueue.main.async {self.movieService.getTopRatedMovies { (result) in
+                switch result {
+                case .success(let response):
+                    self.topRatedMovies = response.results
+                    self.collectionTopRatedView.reloadData()
+                    
+                case .failure(let error):
+                    
+                    let title = "Error"
+                    
+                    let action = UIAlertAction(title: "OK", style: .default)
+                    
+                    self.displayAlert(with: title, message: error.localizedDescription, actions: [action])
+                }
+                }
             }
         }
         
@@ -96,6 +109,15 @@ class SectionsController: UIViewController, TableViewCellDelegate, AlertDisplaye
         if segue.destination is DetailsViewController {
             let vc = segue.destination as? DetailsViewController
             vc?.movieId = movieId
+        }
+    }
+    
+    private func showOfflinePage() {
+        DispatchQueue.main.async {
+            self.performSegue(
+                withIdentifier: "NetworkLost",
+                sender: self
+            )
         }
     }
 }

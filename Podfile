@@ -8,5 +8,6 @@ target 'MovieAppTask' do
   # Pods for MovieAppTask
 
   pod 'SwiftLint'
+  pod 'ReachabilitySwift'
 
 end

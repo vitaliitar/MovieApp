@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -19,162 +19,254 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		08B0F16C6FC0283F953B759D63FA896E /* Pods-MovieAppTask-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F066125F8040A0C1C0A4920A5DA7D96 /* Pods-MovieAppTask-dummy.m */; };
-		62692282665D663BE45DAB6C208AA94D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
-		CD64A8109BBBDE146811AE2089CB56F4 /* Pods-MovieAppTask-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D955C11195B85378260A5A2D061D1D4 /* Pods-MovieAppTask-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		09944176280C980EB49784DBCA380462 /* ReachabilitySwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A65D63BB1745A018499B1015D18BF613 /* ReachabilitySwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4627935AED721C697210046C88CA8918 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8600D47A402BFF4D6115152C4674E704 /* SystemConfiguration.framework */; };
+		51E6D6EC168CEA630E9150DE56048363 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2544C3A1631BACBD2FC964E079CB6787 /* CoreTelephony.framework */; };
+		53B58920B24C01F745719572D7FCEE6B /* Pods-MovieAppTask-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DEDA1A70B10EAC11FE57C9B7F2C2188 /* Pods-MovieAppTask-dummy.m */; };
+		5E9B976C09409CBEF95C86F0223830E6 /* Pods-MovieAppTask-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B284FB0BAD029AB27855E4983D12C546 /* Pods-MovieAppTask-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63CFB57CB26A85A5A50E1535E9ADD990 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2B117F7A3CB312FF54BFF9D46B0180 /* Foundation.framework */; };
+		65303FAC78F15F3CC8F26B67E550775E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2B117F7A3CB312FF54BFF9D46B0180 /* Foundation.framework */; };
+		AC96F44279E61358242F26840D4853F0 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED8A9D732A8AE9634593D99115A331A /* Reachability.swift */; };
+		E5F6ACACDF29D937A21E7DEC85A13E3E /* ReachabilitySwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA60C647AC4F264E19BF5B93DE221E0 /* ReachabilitySwift-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F1838E8429718BDB5C4B5B278FAE9706 /* PBXContainerItemProxy */ = {
+		51E82ABBAB6889DC2AE27F957E968B8C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
 			remoteInfo = SwiftLint;
 		};
+		D7B0EC6B6263CAC50609F87743A6CEA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0B00B2C167CD783351BD1D00BD5AD1F8;
+			remoteInfo = ReachabilitySwift;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01B5108AAFD8A0B6A5438511838AC4FD /* Pods-MovieAppTask-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MovieAppTask-acknowledgements.markdown"; sourceTree = "<group>"; };
+		12C51679623F50C3933B00253C9A53BA /* ReachabilitySwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ReachabilitySwift.release.xcconfig; sourceTree = "<group>"; };
 		16041CBFF16078959D003F1819D0B4DA /* Pods_MovieAppTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MovieAppTask.framework; path = "Pods-MovieAppTask.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3D955C11195B85378260A5A2D061D1D4 /* Pods-MovieAppTask-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MovieAppTask-umbrella.h"; sourceTree = "<group>"; };
-		3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.debug.xcconfig; sourceTree = "<group>"; };
-		50EE50AA045CC43FEA206A3F21D0AFE8 /* Pods-MovieAppTask-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MovieAppTask-Info.plist"; sourceTree = "<group>"; };
-		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
-		7F066125F8040A0C1C0A4920A5DA7D96 /* Pods-MovieAppTask-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MovieAppTask-dummy.m"; sourceTree = "<group>"; };
+		1D04460E0922CACB1300FE0C02DA9A3A /* ReachabilitySwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ReachabilitySwift.debug.xcconfig; sourceTree = "<group>"; };
+		1DEDA1A70B10EAC11FE57C9B7F2C2188 /* Pods-MovieAppTask-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MovieAppTask-dummy.m"; sourceTree = "<group>"; };
+		21B03CA622E690725A6626C088E1D09F /* Reachability.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Reachability.framework; path = ReachabilitySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2544C3A1631BACBD2FC964E079CB6787 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
+		2BA60C647AC4F264E19BF5B93DE221E0 /* ReachabilitySwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ReachabilitySwift-dummy.m"; sourceTree = "<group>"; };
+		355E38F6CD0C6D92F34BFD589CB512A5 /* Pods-MovieAppTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MovieAppTask.release.xcconfig"; sourceTree = "<group>"; };
+		64A49DFB4CE20AE730A4A3EE3F1DF91B /* Pods-MovieAppTask-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MovieAppTask-Info.plist"; sourceTree = "<group>"; };
+		69AB28B878EEE373B15EFB046F36B862 /* ReachabilitySwift-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-prefix.pch"; sourceTree = "<group>"; };
+		7E08CDBF51100A909A0DF2E70154AC04 /* Pods-MovieAppTask-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MovieAppTask-acknowledgements.plist"; sourceTree = "<group>"; };
+		835F6CDE2524CBB5FBB77C0D810575F4 /* Pods-MovieAppTask-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MovieAppTask-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8600D47A402BFF4D6115152C4674E704 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		88357B01228D0F4D83709A7D11815DC2 /* SwiftLint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.release.xcconfig; sourceTree = "<group>"; };
+		9282390C4BB90883233990ABA8ADB6E2 /* Pods-MovieAppTask-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MovieAppTask-frameworks.sh"; sourceTree = "<group>"; };
+		95674CB679EDB988896413F6C4CB1947 /* Pods-MovieAppTask.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MovieAppTask.modulemap"; sourceTree = "<group>"; };
+		99D7906AE257CF55BFEC3B1DD774BC0D /* ReachabilitySwift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ReachabilitySwift-Info.plist"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		E5E0F39DCA8AC30C5D6C1632158353C4 /* Pods-MovieAppTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MovieAppTask.debug.xcconfig"; sourceTree = "<group>"; };
-		F465030AAEA60D77C5E1F8E3FC89FB4F /* Pods-MovieAppTask.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MovieAppTask.modulemap"; sourceTree = "<group>"; };
-		F795BBCD8FBD3E28BB4A30C184134725 /* Pods-MovieAppTask-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MovieAppTask-acknowledgements.plist"; sourceTree = "<group>"; };
-		F95F912374DDFB8E1CF88051A9D2A4EE /* Pods-MovieAppTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MovieAppTask.release.xcconfig"; sourceTree = "<group>"; };
+		A65D63BB1745A018499B1015D18BF613 /* ReachabilitySwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReachabilitySwift-umbrella.h"; sourceTree = "<group>"; };
+		AA9379980103D20554AEB7FB48F550D7 /* Pods-MovieAppTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MovieAppTask.debug.xcconfig"; sourceTree = "<group>"; };
+		B284FB0BAD029AB27855E4983D12C546 /* Pods-MovieAppTask-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MovieAppTask-umbrella.h"; sourceTree = "<group>"; };
+		BED8A9D732A8AE9634593D99115A331A /* Reachability.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reachability.swift; path = Sources/Reachability.swift; sourceTree = "<group>"; };
+		EAE0D813F3D8D2EB1C455B0BE691028E /* SwiftLint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.debug.xcconfig; sourceTree = "<group>"; };
+		EE2B117F7A3CB312FF54BFF9D46B0180 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		F4FEED9D9E4645C56117C6A5604829F1 /* ReachabilitySwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ReachabilitySwift.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E6A7D3D99695736F8E41308C6CDC1A90 /* Frameworks */ = {
+		6BBF6DF5DD213D46EBC4FC3A328A73CC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62692282665D663BE45DAB6C208AA94D /* Foundation.framework in Frameworks */,
+				63CFB57CB26A85A5A50E1535E9ADD990 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		92A37A51219ED31062DE51A3E139BF37 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51E6D6EC168CEA630E9150DE56048363 /* CoreTelephony.framework in Frameworks */,
+				65303FAC78F15F3CC8F26B67E550775E /* Foundation.framework in Frameworks */,
+				4627935AED721C697210046C88CA8918 /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+		03C5C200A0787E300053CFA8F53CA094 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+				25F621761C10451F73C1586FED94CCAC /* iOS */,
 			);
-			name = iOS;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */ = {
+		0D8DB925DA35779C732C643767D26B21 /* SwiftLint */ = {
 			isa = PBXGroup;
 			children = (
-				3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */,
-				7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */,
+				E9B38ABF93A31C4BC0A7A638BDEC8AC7 /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftLint";
+			name = SwiftLint;
+			path = SwiftLint;
 			sourceTree = "<group>";
 		};
-		8EAC582CC0BE80F98B3CE6D1E35636BD /* Pods-MovieAppTask */ = {
+		0E5CD2857E9691F3A98F66453E395865 /* Pods-MovieAppTask */ = {
 			isa = PBXGroup;
 			children = (
-				F465030AAEA60D77C5E1F8E3FC89FB4F /* Pods-MovieAppTask.modulemap */,
-				01B5108AAFD8A0B6A5438511838AC4FD /* Pods-MovieAppTask-acknowledgements.markdown */,
-				F795BBCD8FBD3E28BB4A30C184134725 /* Pods-MovieAppTask-acknowledgements.plist */,
-				7F066125F8040A0C1C0A4920A5DA7D96 /* Pods-MovieAppTask-dummy.m */,
-				50EE50AA045CC43FEA206A3F21D0AFE8 /* Pods-MovieAppTask-Info.plist */,
-				3D955C11195B85378260A5A2D061D1D4 /* Pods-MovieAppTask-umbrella.h */,
-				E5E0F39DCA8AC30C5D6C1632158353C4 /* Pods-MovieAppTask.debug.xcconfig */,
-				F95F912374DDFB8E1CF88051A9D2A4EE /* Pods-MovieAppTask.release.xcconfig */,
+				95674CB679EDB988896413F6C4CB1947 /* Pods-MovieAppTask.modulemap */,
+				835F6CDE2524CBB5FBB77C0D810575F4 /* Pods-MovieAppTask-acknowledgements.markdown */,
+				7E08CDBF51100A909A0DF2E70154AC04 /* Pods-MovieAppTask-acknowledgements.plist */,
+				1DEDA1A70B10EAC11FE57C9B7F2C2188 /* Pods-MovieAppTask-dummy.m */,
+				9282390C4BB90883233990ABA8ADB6E2 /* Pods-MovieAppTask-frameworks.sh */,
+				64A49DFB4CE20AE730A4A3EE3F1DF91B /* Pods-MovieAppTask-Info.plist */,
+				B284FB0BAD029AB27855E4983D12C546 /* Pods-MovieAppTask-umbrella.h */,
+				AA9379980103D20554AEB7FB48F550D7 /* Pods-MovieAppTask.debug.xcconfig */,
+				355E38F6CD0C6D92F34BFD589CB512A5 /* Pods-MovieAppTask.release.xcconfig */,
 			);
 			name = "Pods-MovieAppTask";
 			path = "Target Support Files/Pods-MovieAppTask";
 			sourceTree = "<group>";
 		};
-		965877409E01FB3D85D85E90E6B30185 /* Pods */ = {
+		10E4CFD5039E2FEDEC7C7952DB19FEB5 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				D96179D43A67C5D5323B0682D32C133C /* SwiftLint */,
+				F4FEED9D9E4645C56117C6A5604829F1 /* ReachabilitySwift.modulemap */,
+				2BA60C647AC4F264E19BF5B93DE221E0 /* ReachabilitySwift-dummy.m */,
+				99D7906AE257CF55BFEC3B1DD774BC0D /* ReachabilitySwift-Info.plist */,
+				69AB28B878EEE373B15EFB046F36B862 /* ReachabilitySwift-prefix.pch */,
+				A65D63BB1745A018499B1015D18BF613 /* ReachabilitySwift-umbrella.h */,
+				1D04460E0922CACB1300FE0C02DA9A3A /* ReachabilitySwift.debug.xcconfig */,
+				12C51679623F50C3933B00253C9A53BA /* ReachabilitySwift.release.xcconfig */,
 			);
-			name = Pods;
+			name = "Support Files";
+			path = "../Target Support Files/ReachabilitySwift";
 			sourceTree = "<group>";
 		};
-		9A2AF2ED7110DC6BA823F0A57A6567EB /* Products */ = {
+		25F621761C10451F73C1586FED94CCAC /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				2544C3A1631BACBD2FC964E079CB6787 /* CoreTelephony.framework */,
+				EE2B117F7A3CB312FF54BFF9D46B0180 /* Foundation.framework */,
+				8600D47A402BFF4D6115152C4674E704 /* SystemConfiguration.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		3BECD7294910C50D82B506850CD423FA /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				16041CBFF16078959D003F1819D0B4DA /* Pods_MovieAppTask.framework */,
+				21B03CA622E690725A6626C088E1D09F /* Reachability.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		72A30F542FBABB913197320A2F2378E5 /* ReachabilitySwift */ = {
+			isa = PBXGroup;
+			children = (
+				BED8A9D732A8AE9634593D99115A331A /* Reachability.swift */,
+				10E4CFD5039E2FEDEC7C7952DB19FEB5 /* Support Files */,
+			);
+			name = ReachabilitySwift;
+			path = ReachabilitySwift;
+			sourceTree = "<group>";
+		};
+		BA99C4C3F1B7EDBCA1C38C0FE501A4ED /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0E5CD2857E9691F3A98F66453E395865 /* Pods-MovieAppTask */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				965877409E01FB3D85D85E90E6B30185 /* Pods */,
-				9A2AF2ED7110DC6BA823F0A57A6567EB /* Products */,
-				D14B12815911578512575002C79C2D08 /* Targets Support Files */,
+				03C5C200A0787E300053CFA8F53CA094 /* Frameworks */,
+				D857362FEBF578E003E1AB0EBDDB32A7 /* Pods */,
+				3BECD7294910C50D82B506850CD423FA /* Products */,
+				BA99C4C3F1B7EDBCA1C38C0FE501A4ED /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D14B12815911578512575002C79C2D08 /* Targets Support Files */ = {
+		D857362FEBF578E003E1AB0EBDDB32A7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8EAC582CC0BE80F98B3CE6D1E35636BD /* Pods-MovieAppTask */,
+				72A30F542FBABB913197320A2F2378E5 /* ReachabilitySwift */,
+				0D8DB925DA35779C732C643767D26B21 /* SwiftLint */,
 			);
-			name = "Targets Support Files";
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+		E9B38ABF93A31C4BC0A7A638BDEC8AC7 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				578452D2E740E91742655AC8F1636D1F /* iOS */,
+				EAE0D813F3D8D2EB1C455B0BE691028E /* SwiftLint.debug.xcconfig */,
+				88357B01228D0F4D83709A7D11815DC2 /* SwiftLint.release.xcconfig */,
 			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		D96179D43A67C5D5323B0682D32C133C /* SwiftLint */ = {
-			isa = PBXGroup;
-			children = (
-				7FDA596DBE0337ACDFE55A210D54EF26 /* Support Files */,
-			);
-			name = SwiftLint;
-			path = SwiftLint;
+			name = "Support Files";
+			path = "../Target Support Files/SwiftLint";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		08051B0585A8B2EA34C8C505CC9466A6 /* Headers */ = {
+		09F7B7D04C454C16C0015640CF269F7E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD64A8109BBBDE146811AE2089CB56F4 /* Pods-MovieAppTask-umbrella.h in Headers */,
+				09944176280C980EB49784DBCA380462 /* ReachabilitySwift-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2E909143E32F97F09CEA107885AB37BF /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E9B976C09409CBEF95C86F0223830E6 /* Pods-MovieAppTask-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		615BD8FBA5DE80D4F2F8E34921A756D6 /* Pods-MovieAppTask */ = {
+		0B00B2C167CD783351BD1D00BD5AD1F8 /* ReachabilitySwift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D0AB6FE3B4F1F13FFAC73E95D388EB92 /* Build configuration list for PBXNativeTarget "Pods-MovieAppTask" */;
+			buildConfigurationList = E50A4613BA081C4F47DEEC1F9B9176BA /* Build configuration list for PBXNativeTarget "ReachabilitySwift" */;
 			buildPhases = (
-				08051B0585A8B2EA34C8C505CC9466A6 /* Headers */,
-				09B8DFEC4F34A309C5A23DCFD236EAA6 /* Sources */,
-				E6A7D3D99695736F8E41308C6CDC1A90 /* Frameworks */,
-				69A34A1960D3ECFB9E0803705793C999 /* Resources */,
+				09F7B7D04C454C16C0015640CF269F7E /* Headers */,
+				9C9FF78F6878BCE13B73B6BB5DD0A609 /* Sources */,
+				92A37A51219ED31062DE51A3E139BF37 /* Frameworks */,
+				1EA4E360633A1D5CC11F6E9C4EEC2475 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				29BD2B70F38817498E3BB5CA872595E6 /* PBXTargetDependency */,
+			);
+			name = ReachabilitySwift;
+			productName = ReachabilitySwift;
+			productReference = 21B03CA622E690725A6626C088E1D09F /* Reachability.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		615BD8FBA5DE80D4F2F8E34921A756D6 /* Pods-MovieAppTask */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5031BA54CD51DFC0E93E2F7E50F4C85 /* Build configuration list for PBXNativeTarget "Pods-MovieAppTask" */;
+			buildPhases = (
+				2E909143E32F97F09CEA107885AB37BF /* Headers */,
+				BA1EE2AB16AA2504899E5A9D4D784875 /* Sources */,
+				6BBF6DF5DD213D46EBC4FC3A328A73CC /* Frameworks */,
+				8583E1FD098AD322996E9C6AE3247CDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F42727409B94CFE9C68E53E0F2E6DC6 /* PBXTargetDependency */,
+				2B6BCAA88F537231B0A919AAA3162663 /* PBXTargetDependency */,
 			);
 			name = "Pods-MovieAppTask";
 			productName = "Pods-MovieAppTask";
@@ -191,7 +283,7 @@
 				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 10.0";
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -199,18 +291,26 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 9A2AF2ED7110DC6BA823F0A57A6567EB /* Products */;
+			productRefGroup = 3BECD7294910C50D82B506850CD423FA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				615BD8FBA5DE80D4F2F8E34921A756D6 /* Pods-MovieAppTask */,
+				0B00B2C167CD783351BD1D00BD5AD1F8 /* ReachabilitySwift */,
 				52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		69A34A1960D3ECFB9E0803705793C999 /* Resources */ = {
+		1EA4E360633A1D5CC11F6E9C4EEC2475 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8583E1FD098AD322996E9C6AE3247CDC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -220,22 +320,37 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		09B8DFEC4F34A309C5A23DCFD236EAA6 /* Sources */ = {
+		9C9FF78F6878BCE13B73B6BB5DD0A609 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08B0F16C6FC0283F953B759D63FA896E /* Pods-MovieAppTask-dummy.m in Sources */,
+				AC96F44279E61358242F26840D4853F0 /* Reachability.swift in Sources */,
+				E5F6ACACDF29D937A21E7DEC85A13E3E /* ReachabilitySwift-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA1EE2AB16AA2504899E5A9D4D784875 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53B58920B24C01F745719572D7FCEE6B /* Pods-MovieAppTask-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		29BD2B70F38817498E3BB5CA872595E6 /* PBXTargetDependency */ = {
+		1F42727409B94CFE9C68E53E0F2E6DC6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ReachabilitySwift;
+			target = 0B00B2C167CD783351BD1D00BD5AD1F8 /* ReachabilitySwift */;
+			targetProxy = D7B0EC6B6263CAC50609F87743A6CEA6 /* PBXContainerItemProxy */;
+		};
+		2B6BCAA88F537231B0A919AAA3162663 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftLint;
 			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
-			targetProxy = F1838E8429718BDB5C4B5B278FAE9706 /* PBXContainerItemProxy */;
+			targetProxy = 51E82ABBAB6889DC2AE27F957E968B8C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -302,26 +417,9 @@
 			};
 			name = Release;
 		};
-		AD81E62ACCB0B7A923FC8AA288F9921E /* Release */ = {
+		135D0582DF47302C3FCE9502979C247D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7EAB1DA481EDDC005A251D3A5E6BE4CD /* SwiftLint.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		CEFC8A6A4A01BEF3FBB9E6254696330D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E5E0F39DCA8AC30C5D6C1632158353C4 /* Pods-MovieAppTask.debug.xcconfig */;
+			baseConfigurationReference = 355E38F6CD0C6D92F34BFD589CB512A5 /* Pods-MovieAppTask.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -351,10 +449,97 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6F9ABC4ECE4615A315434203338D663A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12C51679623F50C3933B00253C9A53BA /* ReachabilitySwift.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ReachabilitySwift/ReachabilitySwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ReachabilitySwift/ReachabilitySwift-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ReachabilitySwift/ReachabilitySwift.modulemap";
+				PRODUCT_MODULE_NAME = Reachability;
+				PRODUCT_NAME = Reachability;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9F45E8DB3C91C4FC98FABD5624A2F0E5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D04460E0922CACB1300FE0C02DA9A3A /* ReachabilitySwift.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ReachabilitySwift/ReachabilitySwift-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ReachabilitySwift/ReachabilitySwift-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ReachabilitySwift/ReachabilitySwift.modulemap";
+				PRODUCT_MODULE_NAME = Reachability;
+				PRODUCT_NAME = Reachability;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		AD81E62ACCB0B7A923FC8AA288F9921E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 88357B01228D0F4D83709A7D11815DC2 /* SwiftLint.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
 		};
 		D37CD465EC03E96673A76466BB806A2C /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -422,9 +607,9 @@
 			};
 			name = Debug;
 		};
-		D40993D699565D77EADFB2C81AD12F6E /* Release */ = {
+		E57ADFFD3DEEEEEF34519CED34F4FB8C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F95F912374DDFB8E1CF88051A9D2A4EE /* Pods-MovieAppTask.release.xcconfig */;
+			baseConfigurationReference = AA9379980103D20554AEB7FB48F550D7 /* Pods-MovieAppTask.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -454,15 +639,14 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 		EADD1F50ABC8096A0D6CB18822BB4EE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EC0124719FE8EF5FDDD72C26F8A2F57 /* SwiftLint.debug.xcconfig */;
+			baseConfigurationReference = EAE0D813F3D8D2EB1C455B0BE691028E /* SwiftLint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -497,11 +681,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D0AB6FE3B4F1F13FFAC73E95D388EB92 /* Build configuration list for PBXNativeTarget "Pods-MovieAppTask" */ = {
+		B5031BA54CD51DFC0E93E2F7E50F4C85 /* Build configuration list for PBXNativeTarget "Pods-MovieAppTask" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CEFC8A6A4A01BEF3FBB9E6254696330D /* Debug */,
-				D40993D699565D77EADFB2C81AD12F6E /* Release */,
+				E57ADFFD3DEEEEEF34519CED34F4FB8C /* Debug */,
+				135D0582DF47302C3FCE9502979C247D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E50A4613BA081C4F47DEEC1F9B9176BA /* Build configuration list for PBXNativeTarget "ReachabilitySwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9F45E8DB3C91C4FC98FABD5624A2F0E5 /* Debug */,
+				6F9ABC4ECE4615A315434203338D663A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

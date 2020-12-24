@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		4D2AEC6B0EA510D9E1A10DB0 /* Pods_MovieAppTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 167685E9CDDC5665B90DA591 /* Pods_MovieAppTask.framework */; };
+		F64BAA462595073D00A2F10B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64BAA452595073D00A2F10B /* NetworkManager.swift */; };
+		F64BAA492595095200A2F10B /* OfflineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64BAA482595095200A2F10B /* OfflineViewController.swift */; };
 		F64DC76E257FAC72008D890D /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64DC76D257FAC72008D890D /* MoviesViewModel.swift */; };
 		F64EC05D25801E3500BDE17E /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EC05B25801E3500BDE17E /* CollectionViewCell.swift */; };
 		F64EC05E25801E3500BDE17E /* collectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F64EC05C25801E3500BDE17E /* collectionViewCell.xib */; };
@@ -40,6 +42,8 @@
 		167685E9CDDC5665B90DA591 /* Pods_MovieAppTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieAppTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8022737709441DE36F9B7C62 /* Pods-MovieAppTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppTask.debug.xcconfig"; path = "Target Support Files/Pods-MovieAppTask/Pods-MovieAppTask.debug.xcconfig"; sourceTree = "<group>"; };
 		91A280761597C7C2E3559B5D /* Pods-MovieAppTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppTask.release.xcconfig"; path = "Target Support Files/Pods-MovieAppTask/Pods-MovieAppTask.release.xcconfig"; sourceTree = "<group>"; };
+		F64BAA452595073D00A2F10B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F64BAA482595095200A2F10B /* OfflineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineViewController.swift; sourceTree = "<group>"; };
 		F64DC76D257FAC72008D890D /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
 		F64EC05B25801E3500BDE17E /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		F64EC05C25801E3500BDE17E /* collectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = collectionViewCell.xib; sourceTree = "<group>"; };
@@ -182,6 +186,7 @@
 				F64F25AA257EC21B00354524 /* SectionsController.swift */,
 				F69017562577B4FA0064F2D7 /* DetailsViewController.swift */,
 				F67CFE172587CEEA000A4C75 /* FavoritesController.swift */,
+				F64BAA482595095200A2F10B /* OfflineViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 				F690174B25779A200064F2D7 /* MovieService.swift */,
 				F690174D25779A5D0064F2D7 /* MovieStore.swift */,
 				F68D04282590F43C008A4469 /* CoreDataManager.swift */,
+				F64BAA452595073D00A2F10B /* NetworkManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -238,11 +244,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F64ECB9D25756C7800054483 /* Build configuration list for PBXNativeTarget "MovieAppTask" */;
 			buildPhases = (
-				F65A2F5B2580FDEB0058D006 /* ShellScript */,
 				A7F16F98740D3C13C247D361 /* [CP] Check Pods Manifest.lock */,
+				F65A2F5B2580FDEB0058D006 /* ShellScript */,
 				F64ECB8225756C6F00054483 /* Sources */,
 				F64ECB8325756C6F00054483 /* Frameworks */,
 				F64ECB8425756C6F00054483 /* Resources */,
+				AC16AC9066254B82F53D14DB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -325,6 +332,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		AC16AC9066254B82F53D14DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieAppTask/Pods-MovieAppTask-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieAppTask/Pods-MovieAppTask-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieAppTask/Pods-MovieAppTask-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F65A2F5B2580FDEB0058D006 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -352,6 +376,7 @@
 				F64ECBAB257590D900054483 /* Movie.swift in Sources */,
 				F64ECB8E25756C6F00054483 /* ViewController.swift in Sources */,
 				F64ECB9425756C6F00054483 /* MovieAppTask.xcdatamodeld in Sources */,
+				F64BAA462595073D00A2F10B /* NetworkManager.swift in Sources */,
 				F65A2F5A2580F8480058D006 /* AlertDisplayer.swift in Sources */,
 				F69017572577B4FA0064F2D7 /* DetailsViewController.swift in Sources */,
 				F64ECBAD2575970F00054483 /* Utils.swift in Sources */,
@@ -362,6 +387,7 @@
 				F64ECBA6257576BF00054483 /* CircularProgressView.swift in Sources */,
 				F68D04292590F43C008A4469 /* CoreDataManager.swift in Sources */,
 				F67CFE182587CEEA000A4C75 /* FavoritesController.swift in Sources */,
+				F64BAA492595095200A2F10B /* OfflineViewController.swift in Sources */,
 				F64EC05D25801E3500BDE17E /* CollectionViewCell.swift in Sources */,
 				F68D042D2590FDA7008A4469 /* MovieCoreData+CoreDataProperties.swift in Sources */,
 				F68D042B2590FD7C008A4469 /* MovieCoreData+CoreDataClass.swift in Sources */,

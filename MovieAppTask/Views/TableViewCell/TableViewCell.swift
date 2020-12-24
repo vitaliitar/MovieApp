@@ -36,7 +36,6 @@ class TableViewCell: UITableViewCell {
     
     @IBAction func changeFavorite(_ sender: UIButton) {
         
-        print("index: \(indexPath.row)")
         self.delegate.favoriteTapped(at: indexPath)
         
     }

@@ -31,7 +31,7 @@ class CoreDataManager {
         }
     }
     
-    func insertMovie(movieData: Movie) -> MovieCoreData? {
+    func insertMovie(movieData: Movie) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         
         let managedContext = appDelegate.persistentContainer.viewContext
@@ -48,11 +48,8 @@ class CoreDataManager {
         
         do {
             try managedContext.save()
-            print("Cool everything is saved")
-            return movie
         } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
-            return nil
         }
     }
     
@@ -86,7 +83,7 @@ class CoreDataManager {
             try managedContext.save()
             
         } catch {
-            // DO smth
+            print(error)
         }
         
     }

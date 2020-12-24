@@ -38,7 +38,36 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7rO-Eq-zIR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1004" y="-978"/>
+            <point key="canvasLocation" x="-1030" y="-883"/>
+        </scene>
+        <!--Offline View Controller-->
+        <scene sceneID="m6k-CU-3sK">
+            <objects>
+                <viewController id="g9t-nd-5mU" customClass="OfflineViewController" customModule="MovieAppTask" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GYU-Un-u5r">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-internet" translatesAutoresizingMaskIntoConstraints="NO" id="UKa-bm-Idb">
+                                <rect key="frame" x="0.0" y="200" width="414" height="442"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="UKa-bm-Idb" firstAttribute="centerX" secondItem="GYU-Un-u5r" secondAttribute="centerX" id="1wQ-gZ-KLb"/>
+                            <constraint firstItem="UKa-bm-Idb" firstAttribute="centerY" secondItem="GYU-Un-u5r" secondAttribute="centerY" id="6Zd-y1-QzY"/>
+                            <constraint firstItem="UKa-bm-Idb" firstAttribute="top" secondItem="p7g-2b-ht8" secondAttribute="top" constant="200" id="8DH-Y3-tSe"/>
+                            <constraint firstItem="UKa-bm-Idb" firstAttribute="trailing" secondItem="p7g-2b-ht8" secondAttribute="trailing" id="KyM-Pe-x2o"/>
+                            <constraint firstItem="UKa-bm-Idb" firstAttribute="leading" secondItem="p7g-2b-ht8" secondAttribute="leading" id="fqD-cd-gNK"/>
+                            <constraint firstItem="UKa-bm-Idb" firstAttribute="centerX" secondItem="GYU-Un-u5r" secondAttribute="centerX" id="nQW-ic-n35"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="p7g-2b-ht8"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="993-9O-cNd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="334-u5-jYz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="521.73913043478262" y="-1066.0714285714284"/>
         </scene>
         <!--Main-->
         <scene sceneID="nY8-Wb-jzp">
@@ -102,11 +131,12 @@
                         <outlet property="indicatorView" destination="aaG-In-lIv" id="nge-Yr-OCo"/>
                         <outlet property="tablePopularView" destination="MKC-jQ-Y76" id="g7W-Q8-PpN"/>
                         <segue destination="y8W-Rc-7mU" kind="show" identifier="goToDetailsView" id="WEY-kh-qH4"/>
+                        <segue destination="g9t-nd-5mU" kind="show" identifier="NetworkLost" id="T4Z-j9-QGF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s6G-B9-Tpk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1004.3478260869566" y="-336.16071428571428"/>
+            <point key="canvasLocation" x="-984" y="-123"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="N7W-m3-Mer">
@@ -178,11 +208,12 @@
                         <outlet property="tableView" destination="b1b-ie-oJO" id="pJI-Zi-lBh"/>
                         <outlet property="textField" destination="19w-S2-UJP" id="LGS-ov-FVd"/>
                         <segue destination="y8W-Rc-7mU" kind="show" identifier="goDetailsView" id="fJ9-cy-vDd"/>
+                        <segue destination="g9t-nd-5mU" kind="show" identifier="NetworkUnavailable" id="hWt-yX-4sH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-894.20289855072474" y="340.84821428571428"/>
+            <point key="canvasLocation" x="-322" y="-1583"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="R6J-1l-8Z1">
@@ -311,11 +342,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="944-LU-h6F"/>
+        <segue reference="WEY-kh-qH4"/>
+        <segue reference="T4Z-j9-QGF"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="no-internet" width="512" height="512"/>
         <image name="table" catalog="system" width="128" height="93"/>
     </resources>
 </document>

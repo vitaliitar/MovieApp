@@ -58,7 +58,7 @@ class MovieStore: MovieService {
         
         request.httpBody = jsonData
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        URLSession.shared.dataTask(with: request) { data, _, error in
             guard let data = data, error == nil else {
                 completion(false)
                 return
