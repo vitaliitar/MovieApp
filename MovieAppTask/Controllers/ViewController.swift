@@ -8,7 +8,28 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, AlertDisplayer {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, AlertDisplayer {
+    var coreDataManager = CoreDataManager.sharedManager
+    private let coreDataService = CoreDataStore.shared
+    
+    func favoriteTapped(at index: IndexPath) {
+        let movie = movies[index.row]
+        
+        let containsInFavorite = coreDataService.checkIfContains(id: movie.id)
+        
+        if containsInFavorite {
+            coreDataService.deleteById(id: movie.id)
+            coreDataManager.deleteById(movieId: movie.id)
+            
+        } else {
+            let _ = coreDataManager.insertMovie(movieData: movie)
+            
+            coreDataService.save(id: movie.id)
+            
+        }
+        tableView.reloadRows(at: [index], with: .automatic)
+        
+    }
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -63,6 +84,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
         
+        cell.delegate = self
+        cell.indexPath = indexPath
         cell.configure(with: movies[indexPath.row])
         
         return cell

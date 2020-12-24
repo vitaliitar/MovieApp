@@ -120,13 +120,11 @@ extension FavoritesController: UITableViewDelegate {
 
 extension FavoritesController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        print("NS controllerWillChangeContent :")
         
         tableFavoritesView.beginUpdates()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
         
         switch type {
         case .insert:

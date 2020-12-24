@@ -138,8 +138,6 @@ class CoreDataManager {
         
         let fetchedResultsController = NSFetchedResultsController<MovieCoreData>(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
         
-        print("1.NSFetchResultController inited")
-        
         return fetchedResultsController
     }()
 }

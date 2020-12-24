@@ -72,7 +72,7 @@ class CoreDataStore: CoreDataService {
                 if Int(truncating: value) == id {
                     managedContext.delete(data)
                 }
-                
+
             }
             
             try? managedContext.save()

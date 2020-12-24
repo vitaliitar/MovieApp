@@ -22,6 +22,7 @@ class DetailsViewController: UIViewController, AlertDisplayer {
     private var movie: Movie?
     private let movieService = MovieStore.shared
     private let coreDataService = CoreDataStore.shared
+    private let coreDataManager = CoreDataManager.sharedManager
     var movieId: Int?
     
     override func viewDidLoad() {
@@ -46,33 +47,18 @@ class DetailsViewController: UIViewController, AlertDisplayer {
     }
     
     @IBAction func changeFavorite(_ sender: UIButton) {
-        let containsInFavorite = coreDataService.checkIfContains(id: sender.tag)
+        let containsInFavorite = coreDataService.checkIfContains(id: movieId!)
         
         if containsInFavorite {
             favoriteButton.setImage(UIImage(named: "heart.png"), for: .normal)
-            coreDataService.deleteById(id: sender.tag)
-            movieService.markFavourite(mediaId: sender.tag, favourite: false) { success in
-                if !success {
-                    let title = "Error"
-                    
-                    let action = UIAlertAction(title: "OK", style: .default)
-                    
-                    self.displayAlert(with: title, message: "Network error", actions: [action])
-                }
-            }
+                        
+            coreDataService.deleteById(id: movieId!)
+            coreDataManager.deleteById(movieId: movieId!)
             
         } else {
             favoriteButton.setImage(UIImage(named: "filled_heart.png"), for: .normal)
-            coreDataService.save(id: sender.tag)
-            movieService.markFavourite(mediaId: sender.tag, favourite: true) { success in
-                if !success {
-                    let title = "Error"
-                    
-                    let action = UIAlertAction(title: "OK", style: .default)
-                    
-                    self.displayAlert(with: title, message: "Network error", actions: [action])
-                }
-            }
+            coreDataService.save(id: movieId!)
+            coreDataManager.insertMovie(movieData: movie!)
         }
     }
     
@@ -81,6 +67,8 @@ class DetailsViewController: UIViewController, AlertDisplayer {
     }
     
     func configure(with model: Movie) {
+        movie = model
+        
         self.titleLabel.text = model.title
         self.overviewLabel.text = model.overview
         
@@ -93,9 +81,7 @@ class DetailsViewController: UIViewController, AlertDisplayer {
         self.voteCountLabel.text = String(model.voteCount)
         self.runtimeLabel.text = model.durationText
         self.releaseDateLabel.text = model.releaseDate
-        
-        self.favoriteButton.tag = model.id
-        
+                
         let containsInFavorite = coreDataService.checkIfContains(id: model.id)
         
         if containsInFavorite {
