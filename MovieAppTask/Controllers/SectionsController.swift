@@ -11,23 +11,20 @@ import UIKit
 class SectionsController: UIViewController, TableViewCellDelegate, AlertDisplayer {
     
     var coreDataManager = CoreDataManager.sharedManager
-    private let coreDataService = CoreDataStore.shared
+//    private let coreDataService = CoreDataStore.shared
     
     func favoriteTapped(at index: IndexPath) {
         
         let movie = viewModel.movie(at: index.row)
         
-        let containsInFavorite = coreDataService.checkIfContains(id: movie.id)
+        let containsInFavorite = coreDataManager.checkIfContains(id: movie.id)
         
         if containsInFavorite {
-            coreDataService.deleteById(id: movie.id)
             coreDataManager.deleteById(movieId: movie.id)
             
         } else {
             let _ = coreDataManager.insertMovie(movieData: movie)
-            
-            coreDataService.save(id: movie.id)
-            
+                        
         }
         tablePopularView.reloadRows(at: [index], with: .automatic)
         

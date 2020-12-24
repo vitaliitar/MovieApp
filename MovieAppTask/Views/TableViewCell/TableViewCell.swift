@@ -22,7 +22,6 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     
-    private let coreDataService = CoreDataStore.shared
     private let movieService = MovieStore.shared
     
     private let coreDataManager = CoreDataManager.sharedManager
@@ -69,8 +68,8 @@ class TableViewCell: UITableViewCell {
             if let data = try? Data(contentsOf: url) {
                 self.posterImageView.image = UIImage(data: data)
             }
-
-            let containsInFavorite = coreDataService.checkIfContains(id: movie.id)
+            
+            let containsInFavorite = coreDataManager.checkIfContains(id: movie.id)
             
             if containsInFavorite {
                 favoriteButton.setImage(UIImage(named: "filled_heart.png"), for: .normal)

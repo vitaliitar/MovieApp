@@ -10,22 +10,18 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TableViewCellDelegate, AlertDisplayer {
     var coreDataManager = CoreDataManager.sharedManager
-    private let coreDataService = CoreDataStore.shared
     
     func favoriteTapped(at index: IndexPath) {
         let movie = movies[index.row]
-        
-        let containsInFavorite = coreDataService.checkIfContains(id: movie.id)
+                
+        let containsInFavorite = coreDataManager.checkIfContains(id: movie.id)
         
         if containsInFavorite {
-            coreDataService.deleteById(id: movie.id)
             coreDataManager.deleteById(movieId: movie.id)
             
         } else {
             let _ = coreDataManager.insertMovie(movieData: movie)
-            
-            coreDataService.save(id: movie.id)
-            
+                        
         }
         tableView.reloadRows(at: [index], with: .automatic)
         

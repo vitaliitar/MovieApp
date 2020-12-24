@@ -21,7 +21,6 @@ class DetailsViewController: UIViewController, AlertDisplayer {
     @IBOutlet weak var favoriteButton: UIButton!
     private var movie: Movie?
     private let movieService = MovieStore.shared
-    private let coreDataService = CoreDataStore.shared
     private let coreDataManager = CoreDataManager.sharedManager
     var movieId: Int?
     
@@ -47,17 +46,15 @@ class DetailsViewController: UIViewController, AlertDisplayer {
     }
     
     @IBAction func changeFavorite(_ sender: UIButton) {
-        let containsInFavorite = coreDataService.checkIfContains(id: movieId!)
+        let containsInFavorite = coreDataManager.checkIfContains(id: movieId!)
         
         if containsInFavorite {
             favoriteButton.setImage(UIImage(named: "heart.png"), for: .normal)
                         
-            coreDataService.deleteById(id: movieId!)
             coreDataManager.deleteById(movieId: movieId!)
             
         } else {
             favoriteButton.setImage(UIImage(named: "filled_heart.png"), for: .normal)
-            coreDataService.save(id: movieId!)
             coreDataManager.insertMovie(movieData: movie!)
         }
     }
@@ -82,7 +79,7 @@ class DetailsViewController: UIViewController, AlertDisplayer {
         self.runtimeLabel.text = model.durationText
         self.releaseDateLabel.text = model.releaseDate
                 
-        let containsInFavorite = coreDataService.checkIfContains(id: model.id)
+        let containsInFavorite = coreDataManager.checkIfContains(id: model.id)
         
         if containsInFavorite {
             favoriteButton.setImage(UIImage(named: "filled_heart.png"), for: .normal)

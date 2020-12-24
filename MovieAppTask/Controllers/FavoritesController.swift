@@ -13,21 +13,17 @@ class FavoritesController: UIViewController, TableViewCellDelegate, AlertDisplay
     func favoriteTapped(at index: IndexPath) {
         
         let movie = coreDataManager.fetchedResultsController.object(at: index)
-        
-        let containsInFavorite = coreDataService.checkIfContains(id: movie.id)
+                
+        let containsInFavorite = coreDataManager.checkIfContains(id: movie.id)
         
         if containsInFavorite {
-            
-            coreDataService.deleteById(id: movie.id)
             coreDataManager.deleteById(movieId: movie.id)
-            
         }
         tableFavoritesView.reloadData()
         
     }
     
     private let movieService = MovieStore.shared
-    private let coreDataService = CoreDataStore.shared
     private let coreDataManager = CoreDataManager.sharedManager
     private var movieId: Int?
     

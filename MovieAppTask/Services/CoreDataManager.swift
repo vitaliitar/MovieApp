@@ -91,6 +91,26 @@ class CoreDataManager {
         
     }
     
+    func checkIfContains(id: Int) -> Bool {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "MovieCoreData")
+        
+        let movies = try? managedContext.fetch(fetchRequest) as? [MovieCoreData]
+        
+        for data in movies! {
+            let value = data.value(forKey: "id") as! Int
+            
+            if id == value {
+                return true
+            }
+        }
+        
+        return false
+        
+    }
+    
     func fetchAllMovies() -> [MovieCoreData]? {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         

@@ -11,11 +11,7 @@
         <attribute name="voteAverage" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="voteCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="MovieEntity" representedClassName="MovieEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="movieId" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" customClassName="[Int]"/>
-    </entity>
     <elements>
         <element name="MovieCoreData" positionX="-63" positionY="-9" width="128" height="178"/>
-        <element name="MovieEntity" positionX="-63" positionY="-18" width="128" height="58"/>
     </elements>
 </model>
